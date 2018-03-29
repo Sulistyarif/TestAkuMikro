@@ -1,0 +1,55 @@
+<html>
+<head>
+    <title>Naga Api</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet"></script>
+    <script src="jquery.min.js"></script>
+</head>
+<body>
+    <h2 id="namaPers" align="center"></h2>
+    <center><h3>Laporan Jurnal Umum</h3></center>
+    <script>
+    function setNamaPersJurnalUmum(nama){
+    document.getElementById("namaPers").innerHTML= nama;
+    }
+
+    function addRow(tgl, kodeAkun, namaAkun, nomAkun, pos){
+        var table = document.getElementById("myTableData");
+
+        var rowCount = table.rows.length;
+        var row = table.insertRow(rowCount);
+
+        row.insertCell(0).innerHTML= tgl;
+        if(pos == "0"){
+            row.insertCell(1).innerHTML= namaAkun;
+            row.insertCell(2).innerHTML= kodeAkun;
+            row.insertCell(3).innerHTML= numberWithCommas(nomAkun);
+            row.insertCell(4).innerHTML= "-";
+        }else if(pos == ""){
+            row.insertCell(1).innerHTML= namaAkun;
+            row.insertCell(2).innerHTML= "";
+            row.insertCell(3).innerHTML= "";
+            row.insertCell(4).innerHTML= "";
+        }else{
+            row.insertCell(1).innerHTML= "&emsp;" + namaAkun;
+            row.insertCell(2).innerHTML= "&emsp;" + kodeAkun;
+            row.insertCell(3).innerHTML= "-";
+            row.insertCell(4).innerHTML= numberWithCommas(nomAkun);
+        }
+    }
+
+    function total(debet, kredit){
+        var table = document.getElementById("myTableData");
+        var rowCount = table.rows.length;
+        var row = table.insertRow(rowCount);
+
+            row.insertCell(0).innerHTML= "TOTAL";
+            row.insertCell(1).innerHTML= "";
+            row.insertCell(2).innerHTML= "";
+            row.insertCell(3).innerHTML= numberWithCommas(debet);
+            row.insertCell(4).innerHTML= numberWithCommas(kredit);
+    }
+    </script>
+    <button type="button" class="btn btn-success">Tela marga</button>
+    <script src="js/bootstrap.min.js"></script>
+</body>
+</html>
