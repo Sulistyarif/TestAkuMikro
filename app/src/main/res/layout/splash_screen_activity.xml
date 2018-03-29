@@ -17,7 +17,7 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="cursive"
+        android:fontFamily="serif"
         android:text="AKUMIKRO"
         android:textColor="#000"
         android:textSize="48sp"
