@@ -297,13 +297,13 @@ public class TambahDataJurnalActivity extends AppCompatActivity implements DateP
             Log.i("queryTrans", "insert into trans(pid,kode_akun,nominal,pos) values (" + pid + "," + kodeKreditAl.get(i).toString() + "," + nominalAkunKredit + ",1" + ");");
         }
 
-        if (isPembalikUtang1 && isPembalikUtang2){
+        if ((isPembalikUtang1 && isPembalikUtang2) && (indexPembalikUtang1 == indexPembalikUtang2)){
             tambahJurnalPembalik(indexPembalikUtang1,indexPembalikUtang2,0);
-        }else if (isPiutangPendapatan1 && isPiutangPendapatan2){
+        }else if ((isPiutangPendapatan1 && isPiutangPendapatan2) && (indexPembalikUtang1 == indexPembalikUtang2)){
             tambahJurnalPembalik(indexPembalikUtang1, indexPembalikUtang2, 1);
-        }else if (isPendapatanTerimaMuka1 && isPendapatanTerimaMuka2){
+        }else if ((isPendapatanTerimaMuka1 && isPendapatanTerimaMuka2) && (indexPembalikUtang1 == indexPembalikUtang2)){
             tambahJurnalPembalik(indexPembalikUtang1, indexPembalikUtang2, 2);
-        }else if (isBiayaDimuka1 && isBiayaDimuka2){
+        }else if ((isBiayaDimuka1 && isBiayaDimuka2) && (indexPembalikUtang1 == indexPembalikUtang2)){
             tambahJurnalPembalik(indexPembalikUtang1,indexPembalikUtang2, 3);
         }
 

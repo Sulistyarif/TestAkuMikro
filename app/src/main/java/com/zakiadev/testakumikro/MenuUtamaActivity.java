@@ -76,7 +76,7 @@ public class MenuUtamaActivity extends AppCompatActivity {
                         break;
                     }
                     case 5:{
-                        Intent intent = new Intent(MenuUtamaActivity.this, TentangActivity.class);
+                        Intent intent = new Intent(MenuUtamaActivity.this, AboutAppsActivity.class);
                         startActivity(intent);
                         break;
                     }
