@@ -20,6 +20,8 @@
         <ListView
             android:id="@+id/lvMenuUtama"
             android:layout_width="match_parent"
+            android:divider="@drawable/list_divider"
+            android:dividerHeight="1dp"
             android:layout_height="match_parent" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

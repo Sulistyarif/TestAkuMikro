@@ -3,11 +3,13 @@
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ListView
-        android:id="@+id/lvPengaturan"
+    <TextView
+        android:id="@+id/label"
+        android:padding="25dp"
+        android:textSize="20sp"
+        android:textColor="#000"
+        android:gravity="center"
         android:layout_width="match_parent"
-        android:divider="@drawable/list_divider"
-        android:dividerHeight="1dp"
-        android:layout_height="wrap_content"></ListView>
-
+        android:layout_height="match_parent"
+        android:text="TextView" />
 </android.support.constraint.ConstraintLayout>

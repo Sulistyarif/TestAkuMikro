@@ -25,7 +25,7 @@ public class MenuUtamaMateri extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_pengaturan_activity);
 
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,R.layout.simple_listview, R.id.label, menu);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,R.layout.simple_small_listview, R.id.label, menu);
 
         lvMenuMateri = (ListView)findViewById(R.id.lvPengaturan);
         lvMenuMateri.setAdapter(arrayAdapter);
