@@ -62,9 +62,6 @@ public class TambahDataJurnalActivity extends AppCompatActivity implements DateP
     Calendar calendar;
     String tglStor;
     Spinner spinner;
-    boolean isPembalikUtang1,isPembalikUtang2, isPiutangPendapatan1, isPiutangPendapatan2, isPendapatanTerimaMuka1, isPendapatanTerimaMuka2, isBiayaDimuka1, isBiayaDimuka2;
-    int indexPembalikUtang1,indexPembalikUtang2;
-    int yangDibalik;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -80,9 +77,6 @@ public class TambahDataJurnalActivity extends AppCompatActivity implements DateP
         btAddKredit = (Button)findViewById(R.id.btAddKredit);
         btAddJurnal = (Button)findViewById(R.id.btAddData);
         btTgl = (Button)findViewById(R.id.btTgl2);
-
-//        membaerikan value pertama
-        isPembalikUtang1 = isPembalikUtang2 = isPiutangPendapatan1 = isPiutangPendapatan2 = isPendapatanTerimaMuka1 = isPendapatanTerimaMuka2 = isBiayaDimuka1 = isBiayaDimuka2 = false;
 
 //        set tanggal sekarang pada button pemilihan tanggal
         Date tgl = new Date();
@@ -171,21 +165,6 @@ public class TambahDataJurnalActivity extends AppCompatActivity implements DateP
                 debetloop:
                 for (int i = 0; i < dataEtDebet.size(); i++){
 
-//                    ngecek pembalik
-                    if (jenisDebetAl.get(i).toString().equals("7") || jenisDebetAl.get(i).toString().equals("8")){
-                        isPembalikUtang1 = true;
-                        indexPembalikUtang1 = i;
-                    }else if (kodeDebetAl.get(i).toString().equals("1110")){
-                        isPiutangPendapatan1 = true;
-                        indexPembalikUtang1 = i;
-                    }else if (kodeDebetAl.get(i).toString().equals("4102")){
-                        isPendapatanTerimaMuka1 = true;
-                        indexPembalikUtang1 = i;
-                    }else if (jenisDebetAl.get(i).toString().equals("0")){
-                        isBiayaDimuka1 = true;
-                        indexPembalikUtang1 = i;
-                    }
-
                     if (NumberTextWatcherForThousand.trimCommaOfString(dataEtDebet.get(i).getText().toString()).equals("") || jenisDebetAl.size() != dataBtDebet.size()){
                         Toast.makeText(TambahDataJurnalActivity.this,"Lengkapi data debet",Toast.LENGTH_SHORT).show();
                         break debetloop;
@@ -193,21 +172,6 @@ public class TambahDataJurnalActivity extends AppCompatActivity implements DateP
                         Log.i("nilaiLoopDb", "nilai loop:" + i);
                         kreditloop:
                         for (int j = 0; j < dataEtKredit.size(); j++){
-
-//                            ngecek pembalik
-                            if (jenisKreditAl.get(j).toString().equals("2")){
-                                isPembalikUtang2 = true;
-                                indexPembalikUtang2 = j;
-                            }else if (kodeKreditAl.get(j).toString().equals("4102")){
-                                isPiutangPendapatan2 = true;
-                                indexPembalikUtang2 = j;
-                            }else if (kodeKreditAl.get(j).toString().equals("2108")){
-                                isPendapatanTerimaMuka2 = true;
-                                indexPembalikUtang2 = j;
-                            }else if (jenisKreditAl.get(j).toString().equals("7")){
-                                isBiayaDimuka2 = true;
-                                indexPembalikUtang2 = j;
-                            }
 
                             if (NumberTextWatcherForThousand.trimCommaOfString(dataEtKredit.get(j).getText().toString()).equals("") || jenisKreditAl.size() != dataBtKredit.size()){
                                 Toast.makeText(TambahDataJurnalActivity.this,"Lengkapi data kredit",Toast.LENGTH_SHORT).show();
@@ -297,16 +261,6 @@ public class TambahDataJurnalActivity extends AppCompatActivity implements DateP
             Log.i("queryTrans", "insert into trans(pid,kode_akun,nominal,pos) values (" + pid + "," + kodeKreditAl.get(i).toString() + "," + nominalAkunKredit + ",1" + ");");
         }
 
-        if ((isPembalikUtang1 && isPembalikUtang2) && (indexPembalikUtang1 == indexPembalikUtang2)){
-            tambahJurnalPembalik(indexPembalikUtang1,indexPembalikUtang2,0);
-        }else if ((isPiutangPendapatan1 && isPiutangPendapatan2) && (indexPembalikUtang1 == indexPembalikUtang2)){
-            tambahJurnalPembalik(indexPembalikUtang1, indexPembalikUtang2, 1);
-        }else if ((isPendapatanTerimaMuka1 && isPendapatanTerimaMuka2) && (indexPembalikUtang1 == indexPembalikUtang2)){
-            tambahJurnalPembalik(indexPembalikUtang1, indexPembalikUtang2, 2);
-        }else if ((isBiayaDimuka1 && isBiayaDimuka2) && (indexPembalikUtang1 == indexPembalikUtang2)){
-            tambahJurnalPembalik(indexPembalikUtang1,indexPembalikUtang2, 3);
-        }
-
         int tahun = calendar.get(Calendar.YEAR);
         ArrayList<DataModal> dataBulanModals = new DBAdapterMix(TambahDataJurnalActivity.this).selectDistinctBulan();
         DataModal dataModal;
@@ -318,84 +272,6 @@ public class TambahDataJurnalActivity extends AppCompatActivity implements DateP
         }
 
         finish();
-    }
-
-    private void tambahJurnalPembalik(int indexDebetAsal, int indexKreditAsal, int kodePembalik) {
-
-        int jenisAkunDebet, jenisAkunKredit;
-        int nominalAkunDebet, nominalAkunKredit;
-
-        kodeId = new DBAdapterMix(TambahDataJurnalActivity.this).selectLastId();
-        String pid = "p" + kodeId;
-        String keterangan = "";
-        switch (kodePembalik){
-            case 0:{
-                keterangan = "Pembalikan Utang Gaji";
-                break;
-            }
-            case 1:{
-                keterangan = "Pembalikan Piutang Pendapatan Sewa";
-                break;
-            }
-            case 2:{
-                keterangan = "Pembalikan Utang Pendapatan";
-                break;
-            }
-            case 3:{
-                keterangan = "Pembalikan Sewa Dibayar Dimuka";
-                break;
-            }
-        }
-
-
-//        tanggal setornya dibuat tanggal 1 bulan depan
-        calendar.set(Calendar.DAY_OF_MONTH, 01);
-        calendar.add(Calendar.MONTH, 1);
-        String formatDateStor = "yyyy-MM-dd";
-
-        SimpleDateFormat sdfStor = new SimpleDateFormat(formatDateStor, Locale.US);
-        String tglStorPembalik = sdfStor.format(calendar.getTime());
-
-        DataJurnalMar dataJurnalMar = new DataJurnalMar();
-        dataJurnalMar.setPid(pid);
-        dataJurnalMar.setTgl(tglStorPembalik);
-        dataJurnalMar.setKet(keterangan);
-        dataJurnalMar.setKode_trans(pilihanTransaksi);
-
-        new DBAdapterMix(TambahDataJurnalActivity.this).insertJurnalMar(dataJurnalMar);
-
-//        masukan yang harusnya debet dijadikan kredit, dan kredit dijadikan debet
-
-//        debet
-//        karena dibalik maka nilainya juga dibalik
-        jenisAkunKredit = jenisKreditAl.get(indexKreditAsal);
-        nominalAkunKredit = Integer.parseInt(NumberTextWatcherForThousand.trimCommaOfString(dataEtKredit.get(indexKreditAsal).getText().toString()));
-        if (jenisAkunKredit == 2 || jenisAkunKredit == 3 || jenisAkunKredit == 4 || jenisAkunKredit == 5 || jenisAkunKredit == 6){
-            nominalAkunKredit *= -1;
-        }
-        DataTransMar dataTransMar = new DataTransMar();
-        dataTransMar.setPid(pid);
-        dataTransMar.setKode_akun(kodeKreditAl.get(indexKreditAsal).toString());
-        dataTransMar.setNominal(nominalAkunKredit);
-        dataTransMar.setPos(0);
-
-        new DBAdapterMix(TambahDataJurnalActivity.this).insertTrans(dataTransMar);
-
-//        kredit
-//        karena diblaik maka nilainya juga dibalik
-        jenisAkunDebet = jenisDebetAl.get(indexDebetAsal);
-        nominalAkunDebet = Integer.parseInt(NumberTextWatcherForThousand.trimCommaOfString(dataEtDebet.get(indexDebetAsal).getText().toString()));
-        if (jenisAkunDebet == 0 || jenisAkunDebet == 1 || jenisAkunDebet == 7 || jenisAkunDebet == 8 || jenisAkunDebet == 9 ){
-            nominalAkunDebet *= -1;
-        }
-        DataTransMar dataTransMar1 = new DataTransMar();
-        dataTransMar1.setPid(pid);
-        dataTransMar1.setKode_akun(kodeDebetAl.get(indexDebetAsal).toString());
-        dataTransMar1.setNominal(nominalAkunDebet);
-        dataTransMar1.setPos(1);
-
-        new DBAdapterMix(TambahDataJurnalActivity.this).insertTrans(dataTransMar1);
-
     }
 
     private void tambahKredit(int jumKredit, int etJumKredit) {

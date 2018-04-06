@@ -110,8 +110,11 @@ public class SplashScreenActivity extends AppCompatActivity{
 
         String[][] modal = {
                 {"3101", "Modal Pemilik"},
-                {"3201", "Hibah"},
-                {"3301", "Sumbangan"}
+                {"3102", "Hibah"},
+                {"3103", "Sumbangan"},
+                {"3104", "Ikhtisar Laba/Rugi"},
+                {"3105", "Laba Penjualan Aset"},
+                {"3106", "Rugi Penjualan Aset"}
         };
 
         String[][] pendapatanUsaha = {

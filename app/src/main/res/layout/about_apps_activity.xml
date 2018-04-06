@@ -29,7 +29,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="serif"
-                android:text="AKUMIKRO"
+                android:text="MIKURO"
                 android:textAlignment="center"
                 android:textColor="#111"
                 android:textSize="30sp" />
@@ -39,7 +39,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif"
-                android:text="Akutansi Untuk UMKM Mikro"
+                android:text="Mini Akutansi untuk usaha Mikro"
                 android:textAlignment="center"
                 android:textColor="#111"
                 android:textSize="15sp" />

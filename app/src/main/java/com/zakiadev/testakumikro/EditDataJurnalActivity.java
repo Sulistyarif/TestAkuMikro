@@ -121,7 +121,7 @@ public class EditDataJurnalActivity extends AppCompatActivity implements DatePic
         listSpinner.add("Pilih Jenis Transaksi");
         listSpinner.add("Setoran Modal");
         listSpinner.add("Pembelian");
-        listSpinner.add("Penjualan Aset/Jasa");
+        listSpinner.add("Penjualan Aset - Pendapatan Jasa");
         listSpinner.add("Pinjaman dari Pihak Luar (Utang)");
         listSpinner.add("Pembayaran Biaya");
         listSpinner.add("Pengambilan untuk Pribadi");

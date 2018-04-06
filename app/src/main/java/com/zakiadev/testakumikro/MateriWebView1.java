@@ -38,23 +38,27 @@ public class MateriWebView1 extends AppCompatActivity {
                 break;
             }
             case 1:{
-                webView.loadUrl("file:///android_asset/macam macam dan manfaat laporan keuangan.html");
-                break;
-            }
-            case 2:{
                 webView.loadUrl("file:///android_asset/elemen_dan_akun_dalam_laporan.html");
                 break;
             }
-            case 3:{
+            case 2:{
                 webView.loadUrl("file:///android_asset/Kode Akun.html");
                 break;
             }
-            case 4:{
+            case 3:{
                 webView.loadUrl("file:///android_asset/pencatatan transaksi.html");
                 break;
             }
-            case 5:{
+            case 4:{
                 webView.loadUrl("file:///android_asset/transaksi penyesuaian.html");
+                break;
+            }
+            case 5:{
+                webView.loadUrl("file:///android_asset/macam macam dan manfaat laporan keuangan.html");
+                break;
+            }
+            case 6:{
+                webView.loadUrl("file:///android_asset/jurnal penutup dan jurnal pembalik.html");
                 break;
             }
             default:{
@@ -163,6 +167,12 @@ public class MateriWebView1 extends AppCompatActivity {
                     return true;
                 }else if (url.equals("hrupin://barter")){
                     url = "file:///android_asset/barter.html";
+                    Intent intent1 = new Intent(MateriWebView1.this, MateriWebView2.class);
+                    intent1.putExtra("urlIntent", url);
+                    startActivity(intent1);
+                    return true;
+                }else if(url.equals("hrupin://laporan_keuangan")){
+                    url = "file:///android_asset/meyusun_laporan_kuangan.html";
                     Intent intent1 = new Intent(MateriWebView1.this, MateriWebView2.class);
                     intent1.putExtra("urlIntent", url);
                     startActivity(intent1);

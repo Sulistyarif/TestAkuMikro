@@ -18,7 +18,7 @@ import com.zakiadev.testakumikro.LaporanJurnalUmum;
 public class MenuLaporanAcvtivity extends AppCompatActivity {
 
     ListView lvMenuLaporan;
-    String[] menu = {"Jurnal Umum", "Neraca Saldo", "Laba Rugi", "Perubahan Ekuitas", "Neraca", "Arus Kas"};
+    String[] menu = {"Jurnal Umum", "Neraca Saldo", "Laba Rugi", "Perubahan Ekuitas", "Laporan Posisi Keuangan / Neraca", "Arus Kas"};
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

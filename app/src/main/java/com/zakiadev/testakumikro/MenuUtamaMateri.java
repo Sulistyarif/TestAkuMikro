@@ -16,7 +16,9 @@ import android.widget.ListView;
 public class MenuUtamaMateri extends AppCompatActivity {
 
     ListView lvMenuMateri;
-    String[] menu = {"Pengenalan Akutansi", "Macam-Macam dan Manfaat Laporan Keuangan", "Elemen dan Akun-Akun dalam Laporan Keuangan", "Kode Akun", "Pencatatan Transaksi Kedalam Jurnal", "Penyesuaian"};
+    String[] menu = {"Pengenalan Akutansi", "Elemen dan Akun-Akun dalam Laporan Keuangan"
+            , "Kode Akun", "Pencatatan Transaksi Kedalam Jurnal", "Penyesuaian", "Macam-Macam dan Manfaat Laporan Keuangan"
+            , "Jurnal Penutup dan Pembalik" };
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
