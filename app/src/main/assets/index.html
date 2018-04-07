@@ -12,9 +12,6 @@
 
 </head>
 <body>
-
-
-
 <div class="container-fluid">
 
     <h2 id="namaPersJurnalUmum" align="center"></h2>
@@ -62,8 +59,8 @@
             row.insertCell(3).innerHTML= "";
             row.insertCell(4).innerHTML= "";
         }else{
-            row.insertCell(1).innerHTML= "&emsp;" + namaAkun;
-            row.insertCell(2).innerHTML= "&emsp;" + kodeAkun;
+            row.insertCell(1).innerHTML= '<p style="padding-left:50px;white-space: nowrap; overflow: hidden; text-overflow:ellipsis;">' + namaAkun + '</p>';
+            row.insertCell(2).innerHTML= '<p style="padding-left:50px;white-space: nowrap; overflow: hidden; text-overflow:ellipsis;">' + kodeAkun + '</p>';
             row.insertCell(3).innerHTML= "-";
             row.insertCell(4).innerHTML= parseInt(nomAkun).toLocaleString(['ban', 'id']);
         }
