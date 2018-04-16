@@ -172,7 +172,7 @@ public class MateriWebView1 extends AppCompatActivity {
                     startActivity(intent1);
                     return true;
                 }else if(url.equals("hrupin://laporan_keuangan")){
-                    url = "file:///android_asset/meyusun_laporan_kuangan.html";
+                    url = "file:///android_asset/menyusun_laporan_keuangan.html";
                     Intent intent1 = new Intent(MateriWebView1.this, MateriWebView2.class);
                     intent1.putExtra("urlIntent", url);
                     startActivity(intent1);

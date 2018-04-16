@@ -110,6 +110,7 @@ public class TambahDataJurnalActivity extends AppCompatActivity implements DateP
         listSpinner.add("Pengambilan untuk Pribadi");
         listSpinner.add("Barter");
         listSpinner.add("Penyesuaian");
+        listSpinner.add("Pembalik");
         ArrayAdapter adapterSpinner = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, listSpinner);
         adapterSpinner.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         spinner.setAdapter(adapterSpinner);

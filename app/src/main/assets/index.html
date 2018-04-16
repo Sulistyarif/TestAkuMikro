@@ -46,12 +46,13 @@
 
         var rowCount = table.rows.length;
         var row = table.insertRow(rowCount);
+        var nominal = parseInt(nomAkun).toLocaleString(['ban', 'id']);
 
         row.insertCell(0).innerHTML= tgl;
         if(pos == "0"){
             row.insertCell(1).innerHTML= namaAkun;
             row.insertCell(2).innerHTML= kodeAkun;
-            row.insertCell(3).innerHTML= parseInt(nomAkun).toLocaleString(['ban', 'id']);
+            row.insertCell(3).innerHTML= '<p style="text-align: right;">' + nominal + '</p>';
             row.insertCell(4).innerHTML= "-";
         }else if(pos == ""){
             row.insertCell(1).innerHTML= namaAkun;
@@ -60,9 +61,9 @@
             row.insertCell(4).innerHTML= "";
         }else{
             row.insertCell(1).innerHTML= '<p style="padding-left:50px;white-space: nowrap; overflow: hidden; text-overflow:ellipsis;">' + namaAkun + '</p>';
-            row.insertCell(2).innerHTML= '<p style="padding-left:50px;white-space: nowrap; overflow: hidden; text-overflow:ellipsis;">' + kodeAkun + '</p>';
+            row.insertCell(2).innerHTML= kodeAkun;
             row.insertCell(3).innerHTML= "-";
-            row.insertCell(4).innerHTML= parseInt(nomAkun).toLocaleString(['ban', 'id']);
+            row.insertCell(4).innerHTML= '<p style="text-align: right;">' + nominal + '</p>';
         }
 
     }

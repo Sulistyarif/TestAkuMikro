@@ -111,10 +111,7 @@ public class SplashScreenActivity extends AppCompatActivity{
         String[][] modal = {
                 {"3101", "Modal Pemilik"},
                 {"3102", "Hibah"},
-                {"3103", "Sumbangan"},
-                {"3104", "Ikhtisar Laba/Rugi"},
-                {"3105", "Laba Penjualan Aset"},
-                {"3106", "Rugi Penjualan Aset"}
+                {"3103", "Sumbangan"}
         };
 
         String[][] pendapatanUsaha = {
@@ -124,7 +121,10 @@ public class SplashScreenActivity extends AppCompatActivity{
 
         String[][] pendapatanNonOperasional = {
                 {"4201","Pendapatan bunga"},
-                {"4202", "Pendapatan Lain-Lain"}
+                {"4202", "Pendapatan Lain-Lain"},
+                {"3104", "Ikhtisar Laba/Rugi"},
+                {"3105", "Laba Penjualan Aset"},
+                {"3106", "Rugi Penjualan Aset"}
         };
 
         String[][] biayaUsaha = {
