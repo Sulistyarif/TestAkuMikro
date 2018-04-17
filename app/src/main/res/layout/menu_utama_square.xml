@@ -61,7 +61,7 @@
             android:weightSum="2">
 
             <LinearLayout
-                android:id="@+id/ll3"
+                android:id="@+id/ll8"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -70,14 +70,14 @@
                 android:weightSum="2">
 
                 <ImageView
-                    android:id="@+id/imageView4"
+                    android:id="@+id/imageView6"
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
                     android:layout_weight="1"
                     app:srcCompat="@drawable/menut1" />
 
                 <TextView
-                    android:id="@+id/textView15"
+                    android:id="@+id/textView17"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
@@ -89,7 +89,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/ll4"
+                android:id="@+id/ll9"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -98,14 +98,14 @@
                 android:weightSum="2">
 
                 <ImageView
-                    android:id="@+id/imageView5"
+                    android:id="@+id/imageView7"
                     android:layout_width="match_parent"
-                    android:layout_height="0"
+                    android:layout_height="0dp"
                     android:layout_weight="1"
                     app:srcCompat="@drawable/menut2" />
 
                 <TextView
-                    android:id="@+id/textView16"
+                    android:id="@+id/textView18"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -124,7 +124,7 @@
             android:orientation="horizontal">
 
             <LinearLayout
-                android:id="@+id/ll3"
+                android:id="@+id/ll10"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -133,14 +133,14 @@
                 android:weightSum="2">
 
                 <ImageView
-                    android:id="@+id/imageView4"
+                    android:id="@+id/imageView8"
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
                     android:layout_weight="1"
                     app:srcCompat="@drawable/menut3" />
 
                 <TextView
-                    android:id="@+id/textView15"
+                    android:id="@+id/textView19"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
@@ -152,7 +152,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/ll4"
+                android:id="@+id/ll11"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -161,14 +161,14 @@
                 android:weightSum="2">
 
                 <ImageView
-                    android:id="@+id/imageView5"
+                    android:id="@+id/imageView9"
                     android:layout_width="match_parent"
-                    android:layout_height="0"
+                    android:layout_height="0dp"
                     android:layout_weight="1"
                     app:srcCompat="@drawable/menut4" />
 
                 <TextView
-                    android:id="@+id/textView16"
+                    android:id="@+id/textView20"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -226,7 +226,7 @@
                 <ImageView
                     android:id="@+id/imageView5"
                     android:layout_width="match_parent"
-                    android:layout_height="0"
+                    android:layout_height="0dp"
                     android:layout_weight="1"
                     app:srcCompat="@drawable/menut6" />
 

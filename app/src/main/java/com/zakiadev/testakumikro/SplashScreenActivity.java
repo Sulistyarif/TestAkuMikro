@@ -97,7 +97,7 @@ public class SplashScreenActivity extends AppCompatActivity{
                 {"2102", "Utang Gaji"},
                 {"2103", "Utang Pajak"},
                 {"2104", "Utang Bunga"},
-                {"2105", "Utang Biaya"},
+                {"2105", "Utang Beban"},
                 {"2106", "Utang Wesel"},
                 {"2107", "Pendapatan Diterima Dimuka"},
                 {"2108", "Pendapatan Sewa Diterima Dimuka"}
@@ -123,33 +123,33 @@ public class SplashScreenActivity extends AppCompatActivity{
                 {"4201","Pendapatan bunga"},
                 {"4202", "Pendapatan Lain-Lain"},
                 {"3104", "Ikhtisar Laba/Rugi"},
-                {"3105", "Laba Penjualan Aset"},
-                {"3106", "Rugi Penjualan Aset"}
+                {"3105", "Laba Penjualan Aset"}
         };
 
         String[][] biayaUsaha = {
-                {"5101", "Biaya Gaji"},
-                {"5102", "Biaya Perlengkapan"},
-                {"5103", "Biaya Sewa"},
-                {"5104", "Biaya Listrik"},
-                {"5105", "Biaya Air"},
-                {"5106", "Biaya Telepon"},
-                {"5107", "Biaya Iklan"},
-                {"5108", "Biaya Asuransi"},
-                {"5109", "Biaya Pemeliharaan Peralatan"},
-                {"5110", "Biaya Pemeliharaan Mesin"},
-                {"5111", "Biaya Penyusutan Bangunan"},
-                {"5112", "Biaya Penyusutan Peralatan"},
-                {"5113", "Biaya Penyusutan Kendaraan"},
-                {"5114", "Biaya Penyusutan Mesin"}
+                {"5101", "Beban Gaji"},
+                {"5102", "Beban Perlengkapan"},
+                {"5103", "Beban Sewa"},
+                {"5104", "Beban Listrik"},
+                {"5105", "Beban Air"},
+                {"5106", "Beban Telepon"},
+                {"5107", "Beban Iklan"},
+                {"5108", "Beban Asuransi"},
+                {"5109", "Beban Pemeliharaan Peralatan"},
+                {"5110", "Beban Pemeliharaan Mesin"},
+                {"5111", "Beban Penyusutan Bangunan"},
+                {"5112", "Beban Penyusutan Peralatan"},
+                {"5113", "Beban Penyusutan Kendaraan"},
+                {"5114", "Beban Penyusutan Mesin"}
         };
 
         String[][] biayaLuarUsaha = {
-                {"5201", "Biaya Bunga"},
-                {"5202", "Biaya Administrasi Bank"},
-                {"5203", "Biaya Pajak"},
+                {"5201", "Beban Bunga"},
+                {"5202", "Beban Administrasi Bank"},
+                {"5203", "Beban Pajak"},
                 {"5204", "Kerugian Penjualan Aset"},
-                {"5205", "Kerugian Piutang Tak Tertagih"}
+                {"5205", "Kerugian Piutang Tak Tertagih"},
+                {"3106", "Rugi Penjualan Aset"}
         };
 
         String[][] pengembalianEkuitas = {

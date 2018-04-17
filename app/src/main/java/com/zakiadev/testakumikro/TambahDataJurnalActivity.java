@@ -106,7 +106,7 @@ public class TambahDataJurnalActivity extends AppCompatActivity implements DateP
         listSpinner.add("Pembelian");
         listSpinner.add("Penjualan Aset - Pendapatan Jasa");
         listSpinner.add("Pinjaman dari Pihak Luar (Utang)");
-        listSpinner.add("Pembayaran Biaya");
+        listSpinner.add("Pembayaran Beban");
         listSpinner.add("Pengambilan untuk Pribadi");
         listSpinner.add("Barter");
         listSpinner.add("Penyesuaian");
