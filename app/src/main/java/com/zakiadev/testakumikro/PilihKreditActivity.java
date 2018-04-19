@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
 
@@ -29,6 +30,8 @@ public class PilihKreditActivity extends AppCompatActivity {
     TableHelperDataAkun tableHelperDataAkun;
     int pilihanTrans, indexSumber;
     TextView tvJudul;
+    float mLastMotionY;
+    float mLastMotionX;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -66,7 +69,7 @@ public class PilihKreditActivity extends AppCompatActivity {
                 break;
             }
             case 3:{
-                tableView.setDataAdapter(new SimpleTableDataAdapter(this, tableHelperDataAkun.getDataPil(1,5,6,0)));
+                tableView.setDataAdapter(new SimpleTableDataAdapter(this, tableHelperDataAkun.getDataPil(1,5,6,0,10)));
                 break;
             }
             case 4:{
@@ -111,6 +114,31 @@ public class PilihKreditActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        switch (ev.getAction())
+        {
+            case MotionEvent.ACTION_DOWN:
+                tableView.requestDisallowInterceptTouchEvent(true);
+                break;
+            case MotionEvent.ACTION_MOVE:
+                if (mLastMotionX != 0 && mLastMotionY != 0 && Math.abs(mLastMotionX - ev.getRawX()) > Math.abs(mLastMotionY - ev.getRawY())) {
+                    tableView.requestDisallowInterceptTouchEvent(false);
+                } else {
+                    tableView.requestDisallowInterceptTouchEvent(true);
+                }
+                mLastMotionX = ev.getRawX();
+                mLastMotionY = ev.getRawY();
+                break;
+            case MotionEvent.ACTION_UP:
+                tableView.requestDisallowInterceptTouchEvent(true);
+                break;
+        }
+
+        return super.dispatchTouchEvent(ev);
 
     }
 }

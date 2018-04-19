@@ -52,7 +52,7 @@ public class LaporanLabaRugi extends AppCompatActivity {
         spBulan = (Spinner)findViewById(R.id.spNeracaSaldobulan);
         spTahun = (Spinner)findViewById(R.id.spNeracaSaldoTahun);
 
-        //        ambil waktu sekarang
+//        ambil waktu sekarang
         Date currentDate = Calendar.getInstance().getTime();
 
 //        setting spinner bulan

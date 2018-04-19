@@ -228,13 +228,18 @@ public class TambahDataJurnalActivity extends AppCompatActivity implements DateP
         for (int i = 0; i < dataEtDebet.size() ; i++){
             jenisAkunDebet = jenisDebetAl.get(i);
             nominalAkunDebet = Integer.parseInt(NumberTextWatcherForThousand.trimCommaOfString(dataEtDebet.get(i).getText().toString()));
-            if (jenisAkunDebet == 2 || jenisAkunDebet == 3 || jenisAkunDebet == 4 || jenisAkunDebet == 5 || jenisAkunDebet == 6 ){
+            if (jenisAkunDebet == 2 || jenisAkunDebet == 3 || jenisAkunDebet == 4 || jenisAkunDebet == 5 || jenisAkunDebet == 6 || jenisAkunDebet == 10){
                 nominalAkunDebet *= -1;
             }
 
             DataTransMar dataTransMar = new DataTransMar();
             dataTransMar.setPid(pid);
             dataTransMar.setKode_akun(kodeDebetAl.get(i).toString());
+
+            if (kodeDebetAl.get(i).toString().equals("3106")){
+                nominalAkunDebet = 0 - nominalAkunDebet;
+            }
+
             dataTransMar.setNominal(nominalAkunDebet);
             dataTransMar.setPos(0);
 

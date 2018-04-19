@@ -23,14 +23,28 @@
             android:textColor="#000"
             android:textSize="40dp" />
 
-        <de.codecrafters.tableview.TableView
-            android:id="@+id/tvKecJurnal"
-            android:padding="10dp"
+        <HorizontalScrollView
+            android:id="@+id/hv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="9">
+            android:layout_weight="1">
 
-        </de.codecrafters.tableview.TableView>
+            <LinearLayout
+                android:id="@+id/ll"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <de.codecrafters.tableview.TableView
+                    android:id="@+id/tvKecJurnal"
+                    android:layout_width="410dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="9"
+                    android:padding="10dp">
+
+                </de.codecrafters.tableview.TableView>
+            </LinearLayout>
+        </HorizontalScrollView>
 
 
     </LinearLayout>

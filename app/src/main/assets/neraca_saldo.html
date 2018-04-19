@@ -20,11 +20,22 @@
         row.insertCell(1).innerHTML= namaAkun;
 
         if (jenis == 0 || jenis == 1 || jenis == 7 || jenis == 8 || jenis == 9){
-            row.insertCell(2).innerHTML= "<center>" + parseInt(nominal).toLocaleString(['ban', 'id']) + "</center>";
+            if(nominal < 0 ){
+                nominal = Math.abs(nominal);
+                row.insertCell(2).innerHTML= "<center>"  + "(" + parseInt(nominal).toLocaleString(['ban', 'id']) + ")" + "</center>";
+            }else{
+                row.insertCell(2).innerHTML= "<center>" + parseInt(nominal).toLocaleString(['ban', 'id']) + "</center>";
+            }
+
             row.insertCell(3).innerHTML= "<center>-</center>";
         }else{
             row.insertCell(2).innerHTML= "<center>-</center>";
-            row.insertCell(3).innerHTML= "<center>" + parseInt(nominal).toLocaleString(['ban', 'id']) + "</center>";
+            if(nominal < 0){
+                nominal = Math.abs(nominal);
+                row.insertCell(3).innerHTML= "<center>" + "(" + parseInt(nominal).toLocaleString(['ban', 'id']) + ")" + "</center>";
+            }else{
+                row.insertCell(3).innerHTML= "<center>" + parseInt(nominal).toLocaleString(['ban', 'id']) + "</center>";
+            }
         }
 
     }

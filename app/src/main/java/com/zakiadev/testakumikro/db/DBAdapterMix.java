@@ -297,6 +297,10 @@ public class DBAdapterMix extends SQLiteOpenHelper {
                 int pos = cursor.getInt(6);
                 int jenis = cursor.getInt(7);
 
+                if (kodeAkun.equals("3106")){
+                    nominal *= -1;
+                }
+
                 dataTransaksiMar = new DataTransaksiMar();
 
                 dataTransaksiMar.setPid(pid);
@@ -342,6 +346,10 @@ public class DBAdapterMix extends SQLiteOpenHelper {
                 String namaAkun = cursor.getString(1);
                 long nominal = cursor.getLong(2);
                 int jenis = cursor.getInt(3);
+
+                if (kodeAkun.equals("3106")){
+                    nominal *= -1;
+                }
 
                 dataSaldo = new DataSaldo();
                 dataSaldo.setKodeAkun(kodeAkun);
@@ -490,15 +498,14 @@ public class DBAdapterMix extends SQLiteOpenHelper {
 
         if (cursor != null){
             while (cursor.moveToNext()){
-
-    //                mengambil data tanggal biar diparse
-                String tgl = formatter(cursor.getString(2));
-
-    //                ngeparse tanggal
-                String splitTgl[] = tgl.split("/");
-
     //                ngecek, cuma data yang bertanggal seperti input yang boleh dimasukkan
-                    saldoPendapatan += cursor.getInt(1);
+                int nominal = cursor.getInt(1);
+
+                if (cursor.getInt(0) == 3106){
+                    nominal *= -1;
+                }
+
+                    saldoPendapatan += nominal;
                     Log.i("SaldoPendapatan", "akun : " + cursor.getString(0) + ", dengan nominal : " + cursor.getString(1) + ", ditambahkan pada " + cursor.getString(2));
             }
         }
@@ -1490,80 +1497,6 @@ public class DBAdapterMix extends SQLiteOpenHelper {
         return dataJurnals;
     }
 
-    public ArrayList<DataSaldo> selectLabaRugi(int bulanDipilih, int tahunDipilih) {
-
-        int saldoPendapatan = 0;
-        int saldoBeban = 0;
-        int labaRugi = 0;
-        ArrayList<DataSaldo> dataSaldos = new ArrayList<>();
-        DataSaldo dataSaldo;
-        String bulan = String.format("%02d", bulanDipilih);
-        String tahun = String.valueOf(tahunDipilih);
-
-//        mencari data pendapatan
-        String querySaldo = "SELECT riwayat_nominal.kode_akun, riwayat_nominal.nominal, riwayat_nominal.tgl\n" +
-                "FROM riwayat_nominal\n" +
-                "INNER JOIN akun ON riwayat_nominal.kode_akun = akun.kode_akun\n" +
-                "WHERE akun.jenis = 5 OR akun.jenis = 6";
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery(querySaldo, null);
-
-        if (cursor != null){
-            while (cursor.moveToNext()){
-
-//                mengambil data tanggal biar diparse
-                String tgl = formatter(cursor.getString(2));
-
-//                ngeparse tanggal
-                String splitTgl[] = tgl.split("/");
-
-//                ngecek, cuma data yang bertanggal seperti input yang boleh dimasukkan
-                if (splitTgl[1].equals(bulan) && splitTgl[2].equals(tahun)){
-                       saldoPendapatan += cursor.getInt(1);
-                       Log.i("SaldoPendapatan", "akun : " + cursor.getString(0) + ", dengan nominal : " + cursor.getString(1) + ", ditambahkan pada " + cursor.getString(2));
-                }
-            }
-        }
-        Log.i("Pendapatane : ", String.valueOf(saldoPendapatan));
-        db.close();
-
-//        mencari data beban biaya
-        String queryBeban = "SELECT riwayat_nominal.kode_akun, riwayat_nominal.nominal, riwayat_nominal.tgl\n" +
-                "FROM riwayat_nominal\n" +
-                "INNER JOIN akun ON riwayat_nominal.kode_akun = akun.kode_akun\n" +
-                "WHERE akun.jenis = 7 OR akun.jenis = 8";
-        SQLiteDatabase db1 = this.getReadableDatabase();
-        Cursor cursor1 = db1.rawQuery(queryBeban, null);
-
-        if (cursor1 != null){
-            while (cursor1.moveToNext()){
-
-//                mengambil data tanggal biar diparse
-                String tgl = formatter(cursor1.getString(2));
-
-//                ngeparse tanggal
-                String splitTgl[] = tgl.split("/");
-
-//                ngecek, cuma data yang bertanggal seperti input yang boleh dimasukkan
-                if (splitTgl[1].equals(bulan) && splitTgl[2].equals(tahun)){
-                    saldoBeban += cursor1.getInt(1);
-                    Log.i("BebanBiaya", "akun : " + cursor1.getString(0) + ", dengan nominal : " + cursor1.getString(1) + ", ditambahkan pada " + cursor1.getString(2));
-                }
-            }
-        }
-        Log.i("Bebane : ", String.valueOf(saldoBeban));
-
-//        Menghitung saldo laba
-        labaRugi = saldoPendapatan - saldoBeban;
-        Log.i("Labane :", String.valueOf(labaRugi));
-
-        dataSaldo = new DataSaldo();
-        dataSaldo.setNominal(labaRugi);
-        dataSaldos.add(dataSaldo);
-
-        return dataSaldos;
-    }
-
     public ArrayList<DataSaldo> selectPriveBlnThn(int bulanDipilih, int tahunDipilih) {
         ArrayList<DataSaldo> dataSaldos = new ArrayList<>();
         String bulan = String.format("%02d", bulanDipilih);
@@ -2370,6 +2303,10 @@ public class DBAdapterMix extends SQLiteOpenHelper {
 //                untuk pengecekan
 //                System.out.println("Data yang diambil : " + kodeAkun);
 
+                if (kodeAkun.equals("3106")){
+                    nominal *= -1;
+                }
+
                 dataSaldo = new DataSaldo();
                 dataSaldo.setKodeAkun(kodeAkun);
                 dataSaldo.setNamaAkun(namaAkun);
@@ -2616,6 +2553,11 @@ public class DBAdapterMix extends SQLiteOpenHelper {
                 String namaAkun = cursor.getString(1);
                 long nominal = cursor.getLong(2);
                 int jenis = cursor.getInt(3);
+
+                if(kodeAkun.equals("3106")){
+                    nominal *= -1;
+                    Log.i("nilaiNominal", "" + nominal);
+                }
 
                 dataSaldo = new DataSaldo();
                 dataSaldo.setKodeAkun(kodeAkun);

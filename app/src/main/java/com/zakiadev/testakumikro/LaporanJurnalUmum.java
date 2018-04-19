@@ -72,8 +72,10 @@ public class LaporanJurnalUmum extends AppCompatActivity {
 
                     if (dataTransaksiMar.getPos() == 0){
                         saldoDebet += Math.abs(dataTransaksiMar.getNominal());
+//                        saldoDebet += dataTransaksiMar.getNominal();
                     }else{
                         saldoKredit += Math.abs(dataTransaksiMar.getNominal());
+//                        saldoKredit += dataTransaksiMar.getNominal();
                     }
 
                     if (dataTransaksiMar.getPid().equals(pidSebelum)){

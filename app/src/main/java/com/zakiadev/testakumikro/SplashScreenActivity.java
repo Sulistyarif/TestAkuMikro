@@ -123,7 +123,8 @@ public class SplashScreenActivity extends AppCompatActivity{
                 {"4201","Pendapatan bunga"},
                 {"4202", "Pendapatan Lain-Lain"},
                 {"3104", "Ikhtisar Laba/Rugi"},
-                {"3105", "Laba Penjualan Aset"}
+                {"3105", "Laba Penjualan Aset"},
+                {"3106", "Rugi Penjualan Aset"}
         };
 
         String[][] biayaUsaha = {
@@ -148,8 +149,7 @@ public class SplashScreenActivity extends AppCompatActivity{
                 {"5202", "Beban Administrasi Bank"},
                 {"5203", "Beban Pajak"},
                 {"5204", "Kerugian Penjualan Aset"},
-                {"5205", "Kerugian Piutang Tak Tertagih"},
-                {"3106", "Rugi Penjualan Aset"}
+                {"5205", "Kerugian Piutang Tak Tertagih"}
         };
 
         String[][] pengembalianEkuitas = {

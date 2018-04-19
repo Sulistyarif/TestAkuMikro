@@ -44,6 +44,7 @@
         <activity android:name=".MenuUtamaMateri"/>
         <activity android:name=".PetunjukActivity"/>
         <activity android:name=".AboutAppsActivity"/>
+        <activity android:name=".TestUIActivity"/>
 
     </application>
 
