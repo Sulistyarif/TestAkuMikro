@@ -56,7 +56,7 @@ public class PilihKreditActivity extends AppCompatActivity {
 
         TableColumnDpWidthModel columnModel = new TableColumnDpWidthModel(PilihKreditActivity.this, 2, 200);
         columnModel.setColumnWidth(0, 105);
-        columnModel.setColumnWidth(1, 250);
+        columnModel.setColumnWidth(1, 300);
         tableView.setColumnModel(columnModel);
 
         switch (pilihanTrans){

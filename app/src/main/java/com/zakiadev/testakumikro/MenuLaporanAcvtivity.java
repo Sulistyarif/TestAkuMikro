@@ -8,8 +8,11 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.zakiadev.testakumikro.LaporanJurnalUmum;
+
+import org.w3c.dom.Text;
 
 /**
  * Created by Sulistyarif on 31/01/2018.
@@ -19,11 +22,15 @@ public class MenuLaporanAcvtivity extends AppCompatActivity {
 
     ListView lvMenuLaporan;
     String[] menu = {"Jurnal Umum", "Neraca Saldo", "Laba Rugi", "Perubahan Ekuitas", "Laporan Posisi Keuangan / Neraca", "Arus Kas"};
+    TextView tvjudul;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_pengaturan_activity);
+
+        tvjudul = (TextView)findViewById(R.id.tvTitlePengaturan);
+        tvjudul.setText("LAPORAN");
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, R.layout.simple_listview, R.id.label, menu);
 

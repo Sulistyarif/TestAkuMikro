@@ -118,5 +118,14 @@
                     android:textSize="12dp" />
             </LinearLayout>
         </LinearLayout>
+
+        <Button
+            android:id="@+id/aboutDev"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="15dp"
+            android:layout_weight="1"
+            android:textSize="15dp"
+            android:text="About Developer" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

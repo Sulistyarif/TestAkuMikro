@@ -1988,6 +1988,10 @@ public class DBAdapterMix extends SQLiteOpenHelper {
                         int nominal = Math.abs(cursor.getInt(2)) - 0;
                         Log.i("ArusKas2", cursor.getString(1) + ",nominalnya: " + nominal);
                         dataSaldo.setNamaAkun(cursor.getString(1));
+                        String kodeAkun = cursor.getString(0);
+                        if (kodeAkun.equals("3106")){
+                            nominal *= -1;
+                        }
                         dataSaldo.setNominal(nominal);
                         dataSaldo.setJenis(cursor.getInt(3));
                         dataSaldos.add(dataSaldo);
@@ -1998,6 +2002,10 @@ public class DBAdapterMix extends SQLiteOpenHelper {
                         int nominal = Math.abs(cursorNext.getInt(2)) - Math.abs(cursor.getInt(2));
                         Log.i("ArusKas2", cursor.getString(1) + ",nominalnya: " + nominal);
                         dataSaldo.setNamaAkun(cursor.getString(1));
+                        String kodeAkun = cursor.getString(0);
+                        if (kodeAkun.equals("3106")){
+                            nominal *= -1;
+                        }
                         dataSaldo.setNominal(nominal);
                         dataSaldo.setJenis(cursor.getInt(3));
                         dataSaldos.add(dataSaldo);
@@ -2007,12 +2015,20 @@ public class DBAdapterMix extends SQLiteOpenHelper {
                         Log.i("ArusKas2", cursor.getString(1) + ",nominalnya: " + nominal);
                         dataSaldo.setNamaAkun(cursor.getString(1));
                         dataSaldo.setJenis(cursor.getInt(3));
+                        String kodeAkun = cursor.getString(0);
+                        if (kodeAkun.equals("3106")){
+                            nominal *= -1;
+                        }
                         dataSaldo.setNominal(nominal);
                         dataSaldos.add(dataSaldo);
                     }else {
                         int nominal = Math.abs(cursor.getInt(2)) - 0;
                         Log.i("ArusKas2", cursor.getString(1) + ",nominalnya: " + nominal);
                         dataSaldo.setNamaAkun(cursor.getString(1));
+                        String kodeAkun = cursor.getString(0);
+                        if (kodeAkun.equals("3106")){
+                            nominal *= -1;
+                        }
                         dataSaldo.setNominal(nominal);
                         dataSaldos.add(dataSaldo);
                     }

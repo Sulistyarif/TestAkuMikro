@@ -50,8 +50,8 @@
 
         row.insertCell(0).innerHTML= "";
         row.insertCell(1).innerHTML= "Total";
-        row.insertCell(2).innerHTML= parseInt(saldoDebet).toLocaleString(['ban', 'id']);
-        row.insertCell(3).innerHTML= parseInt(saldoKredit).toLocaleString(['ban', 'id']);
+        row.insertCell(2).innerHTML= "<center>" + parseInt(saldoDebet).toLocaleString(['ban', 'id']) + "</center>";
+        row.insertCell(3).innerHTML= "<center>" + parseInt(saldoKredit).toLocaleString(['ban', 'id']) + "</center>";
 
     }
 
@@ -71,12 +71,11 @@
 <body>
 <div class="container-fluid">
     <h2 id="namaPerusahaan" align="center"></h2>
-    <h3 align="center">Laporan Neraca Saldo</h3>
-    <h4 id="periode" align="center"></h4>
+    <h4 align="center">Laporan Neraca Saldo</h4>
+    <h5 id="periode" align="center"></h5>
     <div class="table-responsive">
-        <table class="table table-bordered" id="myTableData">
-            <thead class="thead-dark">
-            <tr>
+        <table align="center" class="table table-bordered" id="myTableData">
+            <tr align="center">
                 <th>Kode Akun</th>
                 <th>Nama Akun</th>
                 <th>Debet</th>

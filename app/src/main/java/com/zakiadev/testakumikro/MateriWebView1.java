@@ -177,12 +177,76 @@ public class MateriWebView1 extends AppCompatActivity {
                     intent1.putExtra("urlIntent", url);
                     startActivity(intent1);
                     return true;
+//                    tambahan setelah revisi
+                }else if (url.equals("hrupin://trans_setoran_modal")){
+                    url = "file:///android_asset/setor_modal.html";
+                    Intent intent1 = new Intent(MateriWebView1.this, MateriWebView2.class);
+                    intent1.putExtra("urlIntent", url);
+                    startActivity(intent1);
+                    return true;
+                }else if (url.equals("hrupin://trans_beban_dimuka")){
+                    url = "file:///android_asset/trans_beban_dimuka.html";
+                    Intent intent1 = new Intent(MateriWebView1.this, MateriWebView2.class);
+                    intent1.putExtra("urlIntent", url);
+                    startActivity(intent1);
+                    return true;
+                }else if (url.equals("hrupin://trans_pendapatan_dimuka")){
+                    url = "file:///android_asset/trans_pendapatan_dimuka.html";
+                    Intent intent1 = new Intent(MateriWebView1.this, MateriWebView2.class);
+                    intent1.putExtra("urlIntent", url);
+                    startActivity(intent1);
+                    return true;
+                }else if (url.equals("hrupin://trans_pembelian_aset")){
+                    url = "file:///android_asset/trans_pembelian_aset.html";
+                    Intent intent1 = new Intent(MateriWebView1.this, MateriWebView2.class);
+                    intent1.putExtra("urlIntent", url);
+                    startActivity(intent1);
+                    return true;
+                }else if (url.equals("hrupin://trans_jual_aset_dapat_jasa")){
+                    url = "file:///android_asset/trans_jual_aset_dapat_jasa.html";
+                    Intent intent1 = new Intent(MateriWebView1.this, MateriWebView2.class);
+                    intent1.putExtra("urlIntent", url);
+                    startActivity(intent1);
+                    return true;
+                }else if (url.equals("hrupin://trans_piutang_pelanggan")){
+                    url = "file:///android_asset/trans_piutang_pelanggan.html";
+                    Intent intent1 = new Intent(MateriWebView1.this, MateriWebView2.class);
+                    intent1.putExtra("urlIntent", url);
+                    startActivity(intent1);
+                    return true;
+                }else if (url.equals("hrupin://trans_utang_pelanggan")){
+                    url = "file:///android_asset/trans_utang_pelanggan.html";
+                    Intent intent1 = new Intent(MateriWebView1.this, MateriWebView2.class);
+                    intent1.putExtra("urlIntent", url);
+                    startActivity(intent1);
+                    return true;
+                }else if (url.equals("hrupin://trans_bayar_beban")){
+                    url = "file:///android_asset/trans_bayar_beban.html";
+                    Intent intent1 = new Intent(MateriWebView1.this, MateriWebView2.class);
+                    intent1.putExtra("urlIntent", url);
+                    startActivity(intent1);
+                    return true;
+                }else if (url.equals("hrupin://trans_prive")){
+                    url = "file:///android_asset/trans_prive.html";
+                    Intent intent1 = new Intent(MateriWebView1.this, MateriWebView2.class);
+                    intent1.putExtra("urlIntent", url);
+                    startActivity(intent1);
+                    return true;
+                }else if (url.equals("hrupin://trans_barter")){
+                    url = "file:///android_asset/trans_barter.html";
+                    Intent intent1 = new Intent(MateriWebView1.this, MateriWebView2.class);
+                    intent1.putExtra("urlIntent", url);
+                    startActivity(intent1);
+                    return true;
+                }else if (url.equals("hrupin://trans_dapat_jasa_tunai")){
+                    url = "file:///android_asset/trans_dapat_jasa_tunai.html";
+                    Intent intent1 = new Intent(MateriWebView1.this, MateriWebView2.class);
+                    intent1.putExtra("urlIntent", url);
+                    startActivity(intent1);
+                    return true;
+                }else{
+                    return false;
                 }
-//                Intent intent1 = new Intent(MateriWebView1.this, MateriWebView2.class);
-//                intent1.putExtra("urlIntent", url);
-//                startActivity(intent1);
-//                return super.shouldOverrideUrlLoading(view, url);
-                return false;
             }
         });
 

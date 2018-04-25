@@ -42,13 +42,25 @@
       td1.appendChild(document.createTextNode(namaAkun));
       tr.appendChild(td1);
 
-      var td2 = document.createElement('TD');
-      td2.appendChild(document.createTextNode(parseInt(nominal).toLocaleString(['ban', 'id'])));
-      tr.appendChild(td2);
+      if(nominal < 0){
+          var td2 = document.createElement('TD');
+          var sNominal = "(" + Math.abs(parseInt(nominal).toLocaleString(['ban', 'id'])) + ")";
+          td2.appendChild(document.createTextNode(sNominal));
+          td2.setAttribute("align","center");
+          tr.appendChild(td2);
+      }else{
+          var td2 = document.createElement('TD');
+          td2.appendChild(document.createTextNode(parseInt(nominal).toLocaleString(['ban', 'id'])));
+          td2.setAttribute("align","center");
+          tr.appendChild(td2);
+      }
 
-      var td3 = document.createElement('TD');
-      td3.appendChild(document.createTextNode("-"));
-      tr.appendChild(td3);
+
+
+
+      <!--var td3 = document.createElement('TD');-->
+      <!--td3.appendChild(document.createTextNode("-"));-->
+      <!--tr.appendChild(td3);-->
 
       myTableDiv.appendChild(table);
 
@@ -73,10 +85,19 @@
       td1.setAttribute("width","75%");
       tr1.appendChild(td1);
 
-      td3 = document.createElement('TD');
-      td3.appendChild(document.createTextNode(parseInt(total).toLocaleString(['ban', 'id'])));
-      td3.setAttribute("width","25%");
-      tr1.appendChild(td3);
+      if(total < 0){
+          td3 = document.createElement('TD');
+          td3.appendChild(document.createTextNode('(' + Math.abs(parseInt(total).toLocaleString(['ban', 'id'])) + ')'));
+          td3.setAttribute("width","25%");
+          td3.setAttribute("align","center");
+          tr1.appendChild(td3);
+      }else{
+          td3 = document.createElement('TD');
+          td3.appendChild(document.createTextNode(parseInt(total).toLocaleString(['ban', 'id'])));
+          td3.setAttribute("width","25%");
+          td3.setAttribute("align","center");
+          tr1.appendChild(td3);
+      }
 
       myTableDiv.appendChild(table);
     }
@@ -97,7 +118,7 @@
 
       td = document.createElement('TD');
       td.appendChild(document.createTextNode(kodeAkun));
-      td.setAttribute("width","15%");
+      td.setAttribute("width","25%");
       tr1.appendChild(td);
 
       td1 = document.createElement('TD');
@@ -105,15 +126,20 @@
       td1.setAttribute("width","50%");
       tr1.appendChild(td1);
 
-      td2 = document.createElement('TD');
-      td2.appendChild(document.createTextNode(parseInt(nominal).toLocaleString(['ban', 'id'])));
-      td2.setAttribute("width","20%");
-      tr1.appendChild(td2);
-
-      td3 = document.createElement('TD');
-      td3.appendChild(document.createTextNode("-"));
-      td3.setAttribute("width","15%");
-      tr1.appendChild(td3);
+      if(nominal < 0){
+          td2 = document.createElement('TD');
+          var sNominal = "(" + Math.abs(parseInt(nominal).toLocaleString(['ban', 'id'])) + ")";
+          td2.appendChild(document.createTextNode(sNominal));
+          td2.setAttribute("width","25%");
+          td2.setAttribute("align","center");
+          tr1.appendChild(td2);
+      }else{
+          td2 = document.createElement('TD');
+          td2.appendChild(document.createTextNode(parseInt(nominal).toLocaleString(['ban', 'id'])));
+          td2.setAttribute("width","25%");
+          td2.setAttribute("align","center");
+          tr1.appendChild(td2);
+      }
 
       myTableDiv.appendChild(table);
     }
@@ -132,8 +158,8 @@
 <body>
 <div class="container-fluid">
     <h1 id="namaPers" align="center"></h1>
-    <h3 align="center">Laporan Laba/Rugi</h3>
-    <h4 id="periode" align="center"></h4>
+    <h4 align="center">Laporan Laba/Rugi</h4>
+    <h5 id="periode" align="center"></h5>
     <div id="dynamicTable" class="table-responsive">
     </div>
 

@@ -159,7 +159,7 @@ public class LaporanLabaRugi extends AppCompatActivity {
 
                 }
 
-                webView.loadUrl("javascript:separator('" + "Total Biaya Operasional" + "', '" + totalBeban + "');");
+                webView.loadUrl("javascript:separator('" + "Total Beban Operasional" + "', '" + totalBeban + "');");
 
 //                pengambilan data untuk pendapatan luar usaha
                 ArrayList<DataSaldo> dataSaldos2 = new DBAdapterMix(LaporanLabaRugi.this).selectRiwayatJenisBlnThnMarLabaRugi(6, bulanDipilih, tahunDipilih);
@@ -201,7 +201,7 @@ public class LaporanLabaRugi extends AppCompatActivity {
 
                 }
 
-                webView.loadUrl("javascript:separator('" + "Total Biaya Non Operasional" + "', '" + totalBebanNonOp + "');");
+                webView.loadUrl("javascript:separator('" + "Total Beban Non Operasional" + "', '" + totalBebanNonOp + "');");
 
 
 //                menghitung total laba

@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.karumi.dexter.Dexter;
@@ -25,6 +26,8 @@ import com.karumi.dexter.listener.DexterError;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.PermissionRequestErrorListener;
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
+
+import org.w3c.dom.Text;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -41,6 +44,7 @@ public class MenuPengaturanActivity extends AppCompatActivity{
 
     ListView lvMenuPengaturan;
     String[] menu = {"Pengaturan Perusahaan", "Pengaturan Kode Akun", "Backup Data", "Restore Data", "Hapus Semua Data"};
+    TextView tvJudul;
 
     private static final int EXTERNAL_STORAGE_PERMISSION_CONSTANT = 100;
     private static final int REQUEST_PERMISSION_SETTING = 101;
@@ -51,6 +55,9 @@ public class MenuPengaturanActivity extends AppCompatActivity{
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_pengaturan_activity);
+
+        tvJudul = (TextView)findViewById(R.id.tvTitlePengaturan);
+        tvJudul.setText("PENGATURAN");
 
         permissionStatus = getSharedPreferences("permissionStatus", MODE_PRIVATE);
 

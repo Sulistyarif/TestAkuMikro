@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/textView13"
+            android:id="@+id/tvNamaPerusahaanSquare"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -30,10 +30,9 @@
             android:textSize="40sp" />
 
         <TextView
-            android:id="@+id/textView14"
+            android:id="@+id/tvAlamatPerusahaanSquare"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:layout_weight="1"
             android:text="Jalan Panjaitan Jauh Sekali Menyeberang Ke Alam Baka Yang Makanannya Entah"
             android:textAlignment="center"
@@ -46,6 +45,7 @@
         android:id="@+id/sv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -85,6 +85,7 @@
                             android:id="@+id/imageView6"
                             android:layout_width="wrap_content"
                             android:layout_height="100dp"
+                            android:paddingLeft="5dp"
                             android:layout_weight="1"
                             app:srcCompat="@drawable/menut1" />
 
@@ -267,12 +268,6 @@
                     android:textSize="50sp"
                     android:visibility="invisible" />
             </LinearLayout>
-
         </LinearLayout>
-
-
     </ScrollView>
-
-
-
 </android.support.constraint.ConstraintLayout>

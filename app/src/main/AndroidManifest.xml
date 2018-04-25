@@ -45,6 +45,7 @@
         <activity android:name=".PetunjukActivity"/>
         <activity android:name=".AboutAppsActivity"/>
         <activity android:name=".TestUIActivity"/>
+        <activity android:name=".AboutDevActivity"/>
 
     </application>
 

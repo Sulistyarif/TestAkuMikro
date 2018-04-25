@@ -148,8 +148,7 @@ public class SplashScreenActivity extends AppCompatActivity{
                 {"5201", "Beban Bunga"},
                 {"5202", "Beban Administrasi Bank"},
                 {"5203", "Beban Pajak"},
-                {"5204", "Kerugian Penjualan Aset"},
-                {"5205", "Kerugian Piutang Tak Tertagih"}
+                {"5204", "Kerugian Piutang Tak Tertagih"}
         };
 
         String[][] pengembalianEkuitas = {
