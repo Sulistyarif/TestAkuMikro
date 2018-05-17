@@ -2042,37 +2042,67 @@ public class DBAdapterMix extends SQLiteOpenHelper {
 
         String bulan = String.format("%02d", bulanDipilih);
         String tahun = String.valueOf(tahunDipilih);
+        int laba = 0, beban = 0, pendapatan = 0;
 
-        String querySelect = "SELECT * FROM \n" +
-                "(SELECT sum(trans.nominal)\n" +
+//        String querySelect = "SELECT * FROM \n" +
+//                "(SELECT sum(trans.nominal)\n" +
+//                "FROM trans\n" +
+//                "LEFT JOIN jurnal ON trans.pid = jurnal.pid\n" +
+//                "LEFT JOIN akun ON trans.kode_akun = akun.kode_akun\n" +
+//                "WHERE strftime('%m',jurnal.tgl) = '" + bulan + "'\n" +
+//                "AND strftime('%Y',jurnal.tgl) = '" + tahun + "'\n" +
+//                "AND (akun.jenis = 5 OR akun.jenis = 6)),\n" +
+//                "(SELECT sum(trans.nominal)\n" +
+//                "FROM trans\n" +
+//                "LEFT JOIN jurnal ON trans.pid = jurnal.pid\n" +
+//                "LEFT JOIN akun ON trans.kode_akun = akun.kode_akun\n" +
+//                "WHERE strftime('%m',jurnal.tgl) = '" + bulan + "'\n" +
+//                "AND strftime('%Y',jurnal.tgl) = '" + tahun + "'\n" +
+//                "AND (akun.jenis = 7 OR akun.jenis = 8));";
+
+//        beban bisa langsung ditambahkan
+//        namun pada pendapatan ditambahkan manual karena nominal rugi penjualan akan dikalikan minus
+        String queryBeban = "SELECT sum(trans.nominal)\n" +
                 "FROM trans\n" +
                 "LEFT JOIN jurnal ON trans.pid = jurnal.pid\n" +
                 "LEFT JOIN akun ON trans.kode_akun = akun.kode_akun\n" +
                 "WHERE strftime('%m',jurnal.tgl) = '" + bulan + "'\n" +
                 "AND strftime('%Y',jurnal.tgl) = '" + tahun + "'\n" +
-                "AND (akun.jenis = 5 OR akun.jenis = 6)),\n" +
-                "(SELECT sum(trans.nominal)\n" +
-                "FROM trans\n" +
-                "LEFT JOIN jurnal ON trans.pid = jurnal.pid\n" +
-                "LEFT JOIN akun ON trans.kode_akun = akun.kode_akun\n" +
-                "WHERE strftime('%m',jurnal.tgl) = '" + bulan + "'\n" +
-                "AND strftime('%Y',jurnal.tgl) = '" + tahun + "'\n" +
-                "AND (akun.jenis = 7 OR akun.jenis = 8));";
-
+                "AND (akun.jenis = 7 OR akun.jenis = 8)";
 
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery(querySelect, null);
-
-        int laba = 0;
+        Cursor cursor = db.rawQuery(queryBeban, null);
 
         if (cursor != null){
             while (cursor.moveToNext()){
-
-                laba = cursor.getInt(0) - cursor.getInt(1);
-                Log.i("ArusKas2", "labanya: " + laba);
-
+                beban = cursor.getInt(0);
             }
         }
+
+        String queryPendapatan = "SELECT trans.kode_akun, akun.nama_akun, trans.nominal FROM trans\n" +
+                "LEFT JOIN jurnal ON trans.pid = jurnal.pid\n" +
+                "LEFT JOIN akun ON trans.kode_akun = akun.kode_akun\n" +
+                "WHERE (akun.jenis = 5 OR akun.jenis = 6)\n" +
+                "AND strftime('%m',jurnal.tgl) = '" + bulan + "'\n" +
+                "AND strftime('%Y',jurnal.tgl) = '" + tahun + "';";
+
+        Cursor cursor1 = db.rawQuery(queryPendapatan, null);
+        if (cursor1 != null){
+            while (cursor1.moveToNext()){
+
+                int nominal = cursor1.getInt(2);
+                String kodeAkun = cursor1.getString(0);
+
+                if (kodeAkun.equals("3106")){
+                    nominal *= -1;
+                }
+                pendapatan += nominal;
+            }
+
+        }
+
+        laba = pendapatan - beban;
+        Log.i("ArusKas2", "labanya: " + laba);
 
         return laba;
     }

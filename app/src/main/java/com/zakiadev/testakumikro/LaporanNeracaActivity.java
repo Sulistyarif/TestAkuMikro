@@ -238,7 +238,7 @@ public class LaporanNeracaActivity extends AppCompatActivity {
 
                 }
 
-                webView.loadUrl("javascript:separatorPasiva('" + "Total Hutang Lancar" + "', '" + totalHutangLancar + "');");
+                webView.loadUrl("javascript:separatorPasiva('" + "Total Utangf Lancar" + "', '" + totalHutangLancar + "');");
 
 //                pengambilan data untuk biaya luar usaha
                 ArrayList<DataSaldo> dataSaldos3 = new DBAdapterMix(LaporanNeracaActivity.this).selectRiwayatJenisBlnThnMar(3, bulanDipilih, tahunDipilih);
@@ -259,7 +259,7 @@ public class LaporanNeracaActivity extends AppCompatActivity {
 
                 }
 
-                webView.loadUrl("javascript:separatorPasiva('" + "Total Hutang Jangka Panjang" + "', '" + totalHutangJangkaPanjang + "');");
+                webView.loadUrl("javascript:separatorPasiva('" + "Total Utang Jangka Panjang" + "', '" + totalHutangJangkaPanjang + "');");
 
 //                menghitung total laba tanggal tersebut
                 ArrayList<DataSaldo> dataSaldos4 = new DBAdapterMix(LaporanNeracaActivity.this).selectModalNeracaMar(bulanDipilih,tahunDipilih);

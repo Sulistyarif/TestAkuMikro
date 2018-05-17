@@ -130,9 +130,9 @@ public class LaporanArusKas2 extends AppCompatActivity {
                 totalArusKasAktifitasOperasi += laba;
 
                 if (laba < 0){
-                    webView.loadUrl("javascript:separatorMinus('Ikhtisar L/R (Saldo Laba)', '" + Math.abs(laba) + "', 'kasOp');");
+                    webView.loadUrl("javascript:separatorMinusArusKas('Ikhtisar L/R (Saldo Laba)', '" + Math.abs(laba) + "', 'kasOp');");
                 }else {
-                    webView.loadUrl("javascript:separator('Ikhtisar L/R (Saldo Laba)', '" + Math.abs(laba) + "', 'kasOp');");
+                    webView.loadUrl("javascript:separatorArusKas('Ikhtisar L/R (Saldo Laba)', '" + Math.abs(laba) + "', 'kasOp');");
                 }
 
 //                menampilkan data aktifitas operasi
@@ -152,16 +152,16 @@ public class LaporanArusKas2 extends AppCompatActivity {
                     if (!namaAkun.equals("Kas")){
                         if (jenisAkun == 0){
                             if (nominal > 0){
-                                webView.loadUrl("javascript:separatorMinus('Kenaikan " + namaAkun + "', '" + Math.abs(nominal) + "', 'kasOp');");
+                                webView.loadUrl("javascript:separatorMinusArusKas('Kenaikan " + namaAkun + "', '" + Math.abs(nominal) + "', 'kasOp');");
                             }else {
-                                webView.loadUrl("javascript:separator('Penurunan  " + namaAkun + "', '" + Math.abs(nominal) + "', 'kasOp');");
+                                webView.loadUrl("javascript:separatorArusKas('Penurunan  " + namaAkun + "', '" + Math.abs(nominal) + "', 'kasOp');");
                             }
                             totalArusKasAktifitasOperasi -= nominal;
                         }else {
                             if (nominal > 0){
-                                webView.loadUrl("javascript:separator('Kenaikan  " + namaAkun + "', '" + Math.abs(nominal) + "', 'kasOp');");
+                                webView.loadUrl("javascript:separatorArusKas('Kenaikan  " + namaAkun + "', '" + Math.abs(nominal) + "', 'kasOp');");
                             }else {
-                                webView.loadUrl("javascript:separatorMinus('Penurunan " + namaAkun + "', '" + Math.abs(nominal) + "', 'kasOp');");
+                                webView.loadUrl("javascript:separatorMinusArusKas('Penurunan " + namaAkun + "', '" + Math.abs(nominal) + "', 'kasOp');");
                             }
                             totalArusKasAktifitasOperasi += nominal;
                         }
@@ -169,7 +169,7 @@ public class LaporanArusKas2 extends AppCompatActivity {
 
                 }
 
-                webView.loadUrl("javascript:separator('ARUS KAS DARI AKTIVITAS OPERASI', '" + totalArusKasAktifitasOperasi + "', 'kasOp');");
+                webView.loadUrl("javascript:separatorArusKas('ARUS KAS DARI AKTIVITAS OPERASI', '" + totalArusKasAktifitasOperasi + "', 'kasOp');");
 
 //                menampilkan data aktifitas investasi
                 Log.i("ArusKas2", "--mulai aktifitas investasi");
@@ -185,22 +185,22 @@ public class LaporanArusKas2 extends AppCompatActivity {
 
                     if (jenisAkun == 1){
                         if (nominal > 0){
-                            webView.loadUrl("javascript:separatorMinus('Kenaikan  " + namaAkun + "', '" + Math.abs(nominal) + "', 'kasInvest');");
+                            webView.loadUrl("javascript:separatorMinusArusKas('Kenaikan  " + namaAkun + "', '" + Math.abs(nominal) + "', 'kasInvest');");
                         }else {
-                            webView.loadUrl("javascript:separator('Penurunan " + namaAkun + "', '" + Math.abs(nominal) + "', 'kasInvest');");
+                            webView.loadUrl("javascript:separatorArusKas('Penurunan " + namaAkun + "', '" + Math.abs(nominal) + "', 'kasInvest');");
                         }
                         totalArusKasAktifitasInvestasi -= nominal;
                     }else {
                         if (nominal > 0){
-                            webView.loadUrl("javascript:separator('Penurunan " + namaAkun + "', '" + Math.abs(nominal) + "', 'kasInvest');");
+                            webView.loadUrl("javascript:separatorArusKas('Penurunan " + namaAkun + "', '" + Math.abs(nominal) + "', 'kasInvest');");
                         }else {
-                            webView.loadUrl("javascript:separatorMinus('Kenaikan  " + namaAkun + "', '" + Math.abs(nominal) + "', 'kasInvest');");
+                            webView.loadUrl("javascript:separatorMinusArusKas('Kenaikan  " + namaAkun + "', '" + Math.abs(nominal) + "', 'kasInvest');");
                         }
                         totalArusKasAktifitasInvestasi += nominal;
                     }
                 }
 
-                webView.loadUrl("javascript:separator('ARUS KAS DARI AKTIVITAS INVESTASI', '" + totalArusKasAktifitasInvestasi + "', 'kasInvest');");
+                webView.loadUrl("javascript:separatorArusKas('ARUS KAS DARI AKTIVITAS INVESTASI', '" + totalArusKasAktifitasInvestasi + "', 'kasInvest');");
 
 //                menampilkan data arus kas aktifitas pendanaan
                 Log.i("ArusKas2", "--mulai aktifitas pendanaan");
@@ -215,9 +215,9 @@ public class LaporanArusKas2 extends AppCompatActivity {
                     totalArusKasAktifitasPendanaan += nominal;
 
                         if (nominal > 0){
-                            webView.loadUrl("javascript:separator('Kenaikan  " + namaAkun + "', '" + Math.abs(nominal) + "', 'kasDana');");
+                            webView.loadUrl("javascript:separatorArusKas('Kenaikan  " + namaAkun + "', '" + Math.abs(nominal) + "', 'kasDana');");
                         }else {
-                            webView.loadUrl("javascript:separatorMinus('Penurunan " + namaAkun + "', '" + Math.abs(nominal) + "', 'kasDana');");
+                            webView.loadUrl("javascript:separatorMinusArusKas('Penurunan " + namaAkun + "', '" + Math.abs(nominal) + "', 'kasDana');");
                         }
 
                 }
@@ -229,9 +229,9 @@ public class LaporanArusKas2 extends AppCompatActivity {
 
                 if (modalPemilik != 0){
                     if (modalPemilik < 0){
-                        webView.loadUrl("javascript:separatorMinus('Penurunan Modal', '" + Math.abs(modalPemilik) + "', 'kasDana');");
+                        webView.loadUrl("javascript:separatorMinusArusKas('Penurunan Modal', '" + Math.abs(modalPemilik) + "', 'kasDana');");
                     }else {
-                        webView.loadUrl("javascript:separator('Kenaikan Modal', '" + Math.abs(modalPemilik) + "', 'kasDana');");
+                        webView.loadUrl("javascript:separatorArusKas('Kenaikan Modal', '" + Math.abs(modalPemilik) + "', 'kasDana');");
                     }
                     totalArusKasAktifitasPendanaan += modalPemilik;
                 }
@@ -240,17 +240,17 @@ public class LaporanArusKas2 extends AppCompatActivity {
                 priveBulanIni = new DBAdapterMix(LaporanArusKas2.this).selectPriveMar(bulanDipilih,tahunDipilih);
                 if (priveBulanIni != 0){
                     if (priveBulanIni < 0){
-                        webView.loadUrl("javascript:separatorMinus('Pengurangan Prive', '" + Math.abs(priveBulanIni) + "', 'kasDana');");
+                        webView.loadUrl("javascript:separatorMinusArusKas('Pengurangan Prive', '" + Math.abs(priveBulanIni) + "', 'kasDana');");
                     }else {
-                        webView.loadUrl("javascript:separator('Penambahan Prive', '" + Math.abs(priveBulanIni) + "', 'kasDana');");
+                        webView.loadUrl("javascript:separatorArusKas('Penambahan Prive', '" + Math.abs(priveBulanIni) + "', 'kasDana');");
                     }
                     totalArusKasAktifitasPendanaan -= priveBulanIni;
                 }
 
                 if (totalArusKasAktifitasPendanaan < 0){
-                    webView.loadUrl("javascript:separatorMinus('ARUS KAS DARI AKTIVITAS PENDANAAN', '" + totalArusKasAktifitasPendanaan + "', 'kasDana');");
+                    webView.loadUrl("javascript:separatorMinusArusKas('ARUS KAS DARI AKTIVITAS PENDANAAN', '" + totalArusKasAktifitasPendanaan + "', 'kasDana');");
                 }else {
-                    webView.loadUrl("javascript:separator('ARUS KAS DARI AKTIVITAS PENDANAAN', '" + totalArusKasAktifitasPendanaan + "', 'kasDana');");
+                    webView.loadUrl("javascript:separatorArusKas('ARUS KAS DARI AKTIVITAS PENDANAAN', '" + totalArusKasAktifitasPendanaan + "', 'kasDana');");
                 }
 
                 boolean isFirst = false;
@@ -262,9 +262,9 @@ public class LaporanArusKas2 extends AppCompatActivity {
                     //                menampilkan total arus kas
                     int totalArusKas = totalArusKasAktifitasOperasi + totalArusKasAktifitasPendanaan + totalArusKasAktifitasInvestasi;
                     if (totalArusKas < 0){
-                        webView.loadUrl("javascript:separatorMinus('TOTAL ARUS KAS', '" + totalArusKas + "', 'kasDana');");
+                        webView.loadUrl("javascript:separatorMinusArusKas('TOTAL ARUS KAS', '" + totalArusKas + "', 'kasDana');");
                     }else {
-                        webView.loadUrl("javascript:separator('TOTAL ARUS KAS', '" + totalArusKas + "', 'kasDana');");
+                        webView.loadUrl("javascript:separatorArusKas('TOTAL ARUS KAS', '" + totalArusKas + "', 'kasDana');");
                     }
 
                 }else {
@@ -282,14 +282,14 @@ public class LaporanArusKas2 extends AppCompatActivity {
 
                     }
 
-                    webView.loadUrl("javascript:separator('" + "SALDO KAS AWAL PERIODE" + "', '" + saldoKasAwal +"', '" + "kasDana" +"');");
+                    webView.loadUrl("javascript:separatorArusKas('" + "SALDO KAS AWAL PERIODE" + "', '" + saldoKasAwal +"', '" + "kasDana" +"');");
 
 //                menampilkan total arus kas
                     int totalArusKas = totalArusKasAktifitasOperasi + totalArusKasAktifitasPendanaan + totalArusKasAktifitasInvestasi + saldoKasAwal;
                     if (totalArusKas < 0){
-                        webView.loadUrl("javascript:separatorMinus('TOTAL ARUS KAS', '" + totalArusKas + "', 'kasDana');");
+                        webView.loadUrl("javascript:separatorMinusArusKas('TOTAL ARUS KAS', '" + totalArusKas + "', 'kasDana');");
                     }else {
-                        webView.loadUrl("javascript:separator('TOTAL ARUS KAS', '" + totalArusKas + "', 'kasDana');");
+                        webView.loadUrl("javascript:separatorArusKas('TOTAL ARUS KAS', '" + totalArusKas + "', 'kasDana');");
                     }
 
                 }
