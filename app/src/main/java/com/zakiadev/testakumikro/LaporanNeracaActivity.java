@@ -238,7 +238,7 @@ public class LaporanNeracaActivity extends AppCompatActivity {
 
                 }
 
-                webView.loadUrl("javascript:separatorPasiva('" + "Total Utangf Lancar" + "', '" + totalHutangLancar + "');");
+                webView.loadUrl("javascript:separatorPasiva('" + "Total Utang Lancar" + "', '" + totalHutangLancar + "');");
 
 //                pengambilan data untuk biaya luar usaha
                 ArrayList<DataSaldo> dataSaldos3 = new DBAdapterMix(LaporanNeracaActivity.this).selectRiwayatJenisBlnThnMar(3, bulanDipilih, tahunDipilih);
