@@ -377,12 +377,14 @@ public class DBAdapterMix extends SQLiteOpenHelper {
         ArrayList<DataSaldo> dataSaldos = new ArrayList<DataSaldo>();
         String bulan = String.format("%02d", bulanDipilih);
         String tahun = String.valueOf(tahunDipilih);
+        String mixedBulanTahun = tahun + "-" + bulan;
 
         String querySaldo = "SELECT trans.kode_akun, akun.nama_akun, sum(trans.nominal), akun.jenis\n" +
                 "FROM trans\n" +
                 "INNER JOIN jurnal ON jurnal.pid = trans.pid\n" +
                 "INNER JOIN akun ON trans.kode_akun = akun.kode_akun\n" +
-                "WHERE strftime('%m',jurnal.tgl) <= '" + bulan +"' AND strftime('%Y',jurnal.tgl) <= '" + tahun + "' AND akun.jenis = '" + i + "'\n" +
+//                "WHERE strftime('%m',jurnal.tgl) <= '" + bulan +"' AND strftime('%Y',jurnal.tgl) <= '" + tahun + "' AND akun.jenis = '" + i + "'\n" +
+                "WHERE (strftime('%Y-%m',jurnal.tgl) <= '" + mixedBulanTahun + "') AND akun.jenis = '" + i + "'\n" +
                 "GROUP BY trans.kode_akun;";
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(querySaldo, null);
@@ -2547,6 +2549,12 @@ public class DBAdapterMix extends SQLiteOpenHelper {
         modalAkhirBulanIni = modalAwal + tambahanModal + (pendapatan - biaya) - prive;
 
 //        memasukkan data modal akhir bulan ini untuk modal awal bulan depan
+        if(bulanDepan.equals("13")){
+            bulanDepan = "01";
+            int numbTahun = Integer.parseInt(tahun);
+            numbTahun++;
+            tahun = Integer.toString(numbTahun);
+        }
         String tgl = tahun + "-" + bulanDepan + "-01";
         SQLiteDatabase db1 = this.getWritableDatabase();
 
@@ -2589,12 +2597,14 @@ public class DBAdapterMix extends SQLiteOpenHelper {
         ArrayList<DataSaldo> dataSaldos = new ArrayList<DataSaldo>();
         String bulan = String.format("%02d", bulanDipilih);
         String tahun = String.valueOf(tahunDipilih);
+        String mixedBulanTahun = tahun + "-" + bulan;
 
         String querySaldo = "SELECT trans.kode_akun, akun.nama_akun, sum(trans.nominal), akun.jenis\n" +
                 "FROM trans\n" +
                 "INNER JOIN jurnal ON jurnal.pid = trans.pid\n" +
                 "INNER JOIN akun ON trans.kode_akun = akun.kode_akun\n" +
-                "WHERE strftime('%m',jurnal.tgl) = '" + bulan +"' AND strftime('%Y',jurnal.tgl) = '" + tahun + "' AND akun.jenis = '" + i + "'\n" +
+//                "WHERE strftime('%m',jurnal.tgl) = '" + bulan +"' AND strftime('%Y',jurnal.tgl) = '" + tahun + "' AND akun.jenis = '" + i + "'\n" +
+                "WHERE (strftime('%Y-%m',jurnal.tgl) <= '" + mixedBulanTahun + "') AND akun.jenis = '" + i + "'\n" +
                 "GROUP BY trans.kode_akun;";
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(querySaldo, null);

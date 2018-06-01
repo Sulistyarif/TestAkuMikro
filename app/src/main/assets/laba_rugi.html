@@ -55,13 +55,6 @@
           tr.appendChild(td2);
       }
 
-
-
-
-      <!--var td3 = document.createElement('TD');-->
-      <!--td3.appendChild(document.createTextNode("-"));-->
-      <!--tr.appendChild(td3);-->
-
       myTableDiv.appendChild(table);
 
     }
@@ -86,8 +79,10 @@
       tr1.appendChild(td1);
 
       if(total < 0){
+          total *= -1
           td3 = document.createElement('TD');
-          td3.appendChild(document.createTextNode('(' + Math.abs(parseInt(total).toLocaleString(['ban', 'id'])) + ')'));
+          <!--td3.appendChild(document.createTextNode('(' + Math.abs(parseInt(total).toLocaleString(['ban', 'id'])) + ')'));-->
+          td3.appendChild(document.createTextNode('(' + total.toLocaleString(['ban', 'id']) + ')'));
           td3.setAttribute("width","25%");
           td3.setAttribute("align","center");
           tr1.appendChild(td3);
@@ -126,16 +121,20 @@
       td1.setAttribute("width","50%");
       tr1.appendChild(td1);
 
-      if(nominal < 0){
+      var pNominal = parseInt(nominal)
+
+      if(pNominal < 0){
+          pNominal *= -1;
           td2 = document.createElement('TD');
-          var sNominal = "(" + Math.abs(parseInt(nominal).toLocaleString(['ban', 'id'])) + ")";
+          <!--var sNominal = "(" + Math.abs(parseInt(pNominal).toLocaleString(['ban', 'id'])) + ")";-->
+          var sNominal = "(" + pNominal.toLocaleString(['ban', 'id']) + ")";
           td2.appendChild(document.createTextNode(sNominal));
           td2.setAttribute("width","25%");
           td2.setAttribute("align","center");
           tr1.appendChild(td2);
       }else{
           td2 = document.createElement('TD');
-          td2.appendChild(document.createTextNode(parseInt(nominal).toLocaleString(['ban', 'id'])));
+          td2.appendChild(document.createTextNode(parseInt(pNominal).toLocaleString(['ban', 'id'])));
           td2.setAttribute("width","25%");
           td2.setAttribute("align","center");
           tr1.appendChild(td2);

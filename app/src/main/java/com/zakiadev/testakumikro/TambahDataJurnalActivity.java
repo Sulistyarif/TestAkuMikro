@@ -268,11 +268,12 @@ public class TambahDataJurnalActivity extends AppCompatActivity implements DateP
         }
 
         int tahun = calendar.get(Calendar.YEAR);
+        int bulanFor = 0;
         ArrayList<DataModal> dataBulanModals = new DBAdapterMix(TambahDataJurnalActivity.this).selectDistinctBulan();
         DataModal dataModal;
         for (int i = 0; i< dataBulanModals.size(); i++){
             dataModal = dataBulanModals.get(i);
-            int bulanFor = Integer.parseInt(dataModal.getTgl());
+            bulanFor = Integer.parseInt(dataModal.getTgl());
             Log.i("updateModal", "bulanFor:" + bulanFor);
             new DBAdapterMix(TambahDataJurnalActivity.this).updateModal(bulanFor,tahun);
         }

@@ -172,13 +172,15 @@ public class LaporanLabaRugi extends AppCompatActivity {
 
                     String kodeAkun = dataSaldo2.getKodeAkun();
                     String namaAkun = dataSaldo2.getNamaAkun();
-                    String nominal = String.valueOf(dataSaldo2.getNominal());
+                    int nominal = (int)dataSaldo2.getNominal();
 
                     totalPendapatanNonOP += dataSaldo2.getNominal();
+                    Log.i("errorNaN", kodeAkun  + "_" + namaAkun + "_" + nominal);
 
                     webView.loadUrl("javascript:tambahData('" + kodeAkun + "', '" + namaAkun + "', '" + nominal + "');");
 
                 }
+                Log.i("errorNaN", "total pendapatan_" + totalPendapatanNonOP);
 
                 webView.loadUrl("javascript:separator('" + "Total Pendapatan Non Operasional" + "', '" + totalPendapatanNonOP + "');");
 

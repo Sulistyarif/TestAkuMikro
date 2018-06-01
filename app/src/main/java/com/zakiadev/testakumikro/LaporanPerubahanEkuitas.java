@@ -117,7 +117,6 @@ public class LaporanPerubahanEkuitas extends AppCompatActivity {
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
 
-                new DBAdapterMix(LaporanPerubahanEkuitas.this).updateModal(bulanDipilih,tahunDipilih);
 
 //                setting header
                 DataPerusahaan dataPerusahaan = new DBAdapterMix(LaporanPerubahanEkuitas.this).selectDataPerusahaan();
@@ -216,6 +215,8 @@ public class LaporanPerubahanEkuitas extends AppCompatActivity {
                 if (isFinish){
                     finish();
                 }
+
+                new DBAdapterMix(LaporanPerubahanEkuitas.this).updateModal(bulanDipilih,tahunDipilih);
 
                 fabPrint.setOnClickListener(new View.OnClickListener() {
                     @Override
