@@ -777,8 +777,13 @@ public class DBAdapterMix extends SQLiteOpenHelper {
                 "INNER JOIN trans ON jurnal.pid = trans.pid\n" +
                 "WHERE kode_akun = 1101 AND strftime('%m', jurnal.tgl) = '" + bulan + "' AND strftime('%Y', jurnal.tgl) = '" + tahun + "';";
 
+        String querySelectKasAwal = "SELECT *\n" +
+                "FROM modal\n" +
+                "WHERE (strftime('%m',tgl) = '" + bulanIni + "'\n" +
+                "AND strftime('%Y',tgl) = '" + tahun + "');";
+
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery(querySelect, null);
+        Cursor cursor = db.rawQuery(querySelectKasAwal, null);
 
         DataJurnal dataJurnal;
 
@@ -786,7 +791,7 @@ public class DBAdapterMix extends SQLiteOpenHelper {
             while (cursor.moveToNext()){
 
                 String tgl = formatter(cursor.getString(0));
-                int saldoKas = cursor.getInt(1);
+                int saldoKas = cursor.getInt(2);
 
                 String[] splitTgl = tgl.split("/");
 
