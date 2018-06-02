@@ -600,7 +600,14 @@ public class DBAdapterMix extends SQLiteOpenHelper {
 
         String bulan = String.format("%02d", bulanDipilih + 1);
         String tahun = String.valueOf(tahunDipilih);
-        String querySelect = "SELECT * FROM modal WHERE strftime('%m', tgl) = '" + bulan + "' AND strftime('%Y', tgl) = '" + tahun + "'";
+
+        String querySelect;
+        if(bulanDipilih == 12){
+            String tahunBerikut = String.valueOf(tahunDipilih + 1);
+            querySelect = "SELECT * FROM modal WHERE strftime('%m', tgl) = '01' AND strftime('%Y', tgl) = '" + tahunBerikut + "'";
+        }else {
+            querySelect = "SELECT * FROM modal WHERE strftime('%m', tgl) = '" + bulan + "' AND strftime('%Y', tgl) = '" + tahun + "'";
+        }
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(querySelect, null);
@@ -767,7 +774,7 @@ public class DBAdapterMix extends SQLiteOpenHelper {
                 String tgl = formatter(cursor1.getString(0));
                 int kasNeracaAwal = cursor1.getInt(1);
 
-                totalkas += kasNeracaAwal;
+//                totalkas += kasNeracaAwal;
 
             }
         }
@@ -2491,7 +2498,11 @@ public class DBAdapterMix extends SQLiteOpenHelper {
 
         if (cursor != null){
             while (cursor.moveToNext()){
-                pendapatan += cursor.getInt(1);
+                int nominal = cursor.getInt(1);
+                if (cursor.getInt(0) == 3106){
+                    nominal *= -1;
+                }
+                pendapatan += nominal;
             }
         }
         db.close();
@@ -2537,7 +2548,7 @@ public class DBAdapterMix extends SQLiteOpenHelper {
                 "FROM trans\n" +
                 "INNER JOIN jurnal ON jurnal.pid = trans.pid\n" +
                 "INNER JOIN akun ON trans.kode_akun = akun.kode_akun\n" +
-                "WHERE strftime('%m',jurnal.tgl) = '" + bulan + "' AND strftime('%Y',jurnal.tgl) = '" + tahun + "' AND akun.kode_akun = '1101'\n" +
+                "WHERE (strftime('%m',jurnal.tgl) = '" + bulan + "' AND strftime('%Y',jurnal.tgl) = '" + tahun + "') AND akun.kode_akun = '1101'\n" +
                 "GROUP BY trans.kode_akun;";
 
 
@@ -2552,14 +2563,16 @@ public class DBAdapterMix extends SQLiteOpenHelper {
         db.close();
 
         modalAkhirBulanIni = modalAwal + tambahanModal + (pendapatan - biaya) - prive;
+        Log.i("updateModal", "ModalAkhir = " + modalAwal + " + " + tambahanModal + " + (" + pendapatan + " - "
+                + biaya + ") - " + prive + "; Nilai Kas = " + kas);
+
 
 //        memasukkan data modal akhir bulan ini untuk modal awal bulan depan
         if(bulanDepan.equals("13")){
             bulanDepan = "01";
-            int numbTahun = Integer.parseInt(tahun);
-            numbTahun++;
-            tahun = Integer.toString(numbTahun);
+            tahun = Integer.toString(tahunDipilih + 1);
         }
+
         String tgl = tahun + "-" + bulanDepan + "-01";
         SQLiteDatabase db1 = this.getWritableDatabase();
 
@@ -2608,8 +2621,8 @@ public class DBAdapterMix extends SQLiteOpenHelper {
                 "FROM trans\n" +
                 "INNER JOIN jurnal ON jurnal.pid = trans.pid\n" +
                 "INNER JOIN akun ON trans.kode_akun = akun.kode_akun\n" +
-//                "WHERE strftime('%m',jurnal.tgl) = '" + bulan +"' AND strftime('%Y',jurnal.tgl) = '" + tahun + "' AND akun.jenis = '" + i + "'\n" +
-                "WHERE (strftime('%Y-%m',jurnal.tgl) <= '" + mixedBulanTahun + "') AND akun.jenis = '" + i + "'\n" +
+                "WHERE strftime('%m',jurnal.tgl) = '" + bulan +"' AND strftime('%Y',jurnal.tgl) = '" + tahun + "' AND akun.jenis = '" + i + "'\n" +
+//                "WHERE (strftime('%Y-%m',jurnal.tgl) <= '" + mixedBulanTahun + "') AND akun.jenis = '" + i + "'\n" +
                 "GROUP BY trans.kode_akun;";
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(querySaldo, null);
