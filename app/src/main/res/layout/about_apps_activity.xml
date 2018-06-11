@@ -39,7 +39,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif"
-                android:text="Mini Akutansi untuk usaha Mikro"
+                android:text="Mini Akuntansi untuk Usaha Mikro"
                 android:textAlignment="center"
                 android:textColor="#111"
                 android:textSize="15sp" />

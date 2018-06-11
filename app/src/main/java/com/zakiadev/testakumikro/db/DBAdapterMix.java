@@ -425,23 +425,49 @@ public class DBAdapterMix extends SQLiteOpenHelper {
         Cursor cursor1 = db1.rawQuery(querySelectModalBulanIni, null);
 
         DataJurnal dataJurnal;
+        String tgl = "";
+        long modalAwal = 0;
 
         if (cursor1 != null){
             while (cursor1.moveToNext()){
 
-                String tgl = formatter(cursor1.getString(0));
-                long nominal_kredit = cursor1.getLong(1);
+                tgl = formatter(cursor1.getString(0));
+                modalAwal += cursor1.getLong(1);
 
-                Log.i("Isi modal", "Datane : tanggal : " + tgl + ", Nominal : " + nominal_kredit );
-
-                dataJurnal = new DataJurnal();
-
-                    dataJurnal.setTgl(tgl);
-                    dataJurnal.setNominalKredit(nominal_kredit);
-                    dataJurnals.add(dataJurnal);
+                Log.i("Isi modal", "Datane : tanggal : " + tgl + ", Nominal : " + modalAwal );
 
             }
         }
+
+        db1.close();
+        cursor1.close();
+
+        String queryModalTgl01 = "SELECT jurnal.tgl, trans.nominal\n" +
+                "FROM trans\n" +
+                "INNER JOIN jurnal ON jurnal.pid = trans.pid\n" +
+                "INNER JOIN akun ON trans.kode_akun = akun.kode_akun\n" +
+                "WHERE (strftime('%d',jurnal.tgl) = '01' AND strftime('%m',jurnal.tgl) = '" + bulan + "' AND strftime('%Y',jurnal.tgl) = '" + tahun + "') AND akun.jenis = '4';";
+
+        db1 = this.getReadableDatabase();
+        cursor1 = db1.rawQuery(queryModalTgl01, null);
+
+        if (cursor1 != null){
+            while (cursor1.moveToNext()){
+
+                modalAwal += cursor1.getLong(1);
+
+                Log.i("Isi modal", "Datane : tanggal : " + tgl + ", Nominal : " + modalAwal );
+
+            }
+        }
+
+
+//                modal siap dioutput
+        dataJurnal = new DataJurnal();
+
+        dataJurnal.setTgl(tgl);
+        dataJurnal.setNominalKredit(modalAwal);
+        dataJurnals.add(dataJurnal);
 
         return dataJurnals;
 
@@ -459,8 +485,14 @@ public class DBAdapterMix extends SQLiteOpenHelper {
                 "INNER JOIN akun ON trans.kode_akun = akun.kode_akun\n" +
                 "WHERE strftime('%m',jurnal.tgl) = '" + bulan + "' AND strftime('%Y',jurnal.tgl) = '" + tahun + "' AND akun.jenis = '4';";
 
+        String querySelectRev = "SELECT jurnal.tgl, trans.nominal\n" +
+                "FROM trans\n" +
+                "INNER JOIN jurnal ON jurnal.pid = trans.pid\n" +
+                "INNER JOIN akun ON trans.kode_akun = akun.kode_akun\n" +
+                "WHERE (strftime('%d',jurnal.tgl) != '01' AND strftime('%m',jurnal.tgl) = '" + bulan + "' AND strftime('%Y',jurnal.tgl) = '" + tahun + "') AND akun.jenis = '4';";
+
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery(querySelect, null);
+        Cursor cursor = db.rawQuery(querySelectRev, null);
 
         DataJurnal dataJurnal;
 
