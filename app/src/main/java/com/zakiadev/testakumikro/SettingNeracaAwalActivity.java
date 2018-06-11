@@ -269,7 +269,7 @@ public class SettingNeracaAwalActivity extends AppCompatActivity implements Date
 
         SharedPreferences sharedPreferences1 = PreferenceManager.getDefaultSharedPreferences(SettingNeracaAwalActivity.this);
         SharedPreferences.Editor editor1 = sharedPreferences1.edit();
-        editor1.putBoolean("neracaSaldo", true);
+        editor1.putBoolean("NeracaAwal", true);
         editor1.commit();
 
         int tahun = calendar.get(Calendar.YEAR);
@@ -282,8 +282,10 @@ public class SettingNeracaAwalActivity extends AppCompatActivity implements Date
             new DBAdapterMix(SettingNeracaAwalActivity.this).updateModal(bulanFor,tahun);
         }
 
-        Intent intent = new Intent(SettingNeracaAwalActivity.this, MenuUtamaActivity.class);
-        startActivity(intent);
+//        Setelah masukin neraca awal, activitynya langsung nutup lagi
+
+//        Intent intent = new Intent(SettingNeracaAwalActivity.this, MenuUtamaActivity.class);
+//        startActivity(intent);
         finish();
     }
 

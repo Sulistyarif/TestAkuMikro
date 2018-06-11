@@ -47,15 +47,15 @@ public class SplashScreenActivity extends AppCompatActivity{
                 }
             }, 2000L);
 
-        } else if (!sharedPreferences.getBoolean("neracaSaldo", false)){
-            final Handler handler = new Handler();
-            handler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    startActivity(new Intent(SplashScreenActivity.this, SettingNeracaAwalActivity.class));
-                    finish();
-                }
-            }, 2000L);
+//        } else if (!sharedPreferences.getBoolean("neracaSaldo", false)){
+//            final Handler handler = new Handler();
+//            handler.postDelayed(new Runnable() {
+//                @Override
+//                public void run() {
+//                    startActivity(new Intent(SplashScreenActivity.this, SettingNeracaAwalActivity.class));
+//                    finish();
+//                }
+//            }, 2000L);
         }else {
             final Handler handler = new Handler();
             handler.postDelayed(new Runnable() {

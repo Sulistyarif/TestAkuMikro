@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
@@ -43,7 +44,7 @@ import java.util.List;
 public class MenuPengaturanActivity extends AppCompatActivity{
 
     ListView lvMenuPengaturan;
-    String[] menu = {"Pengaturan Perusahaan", "Pengaturan Kode Akun", "Backup Data", "Restore Data", "Hapus Semua Data"};
+    String[] menu = {"Pengaturan Neraca Awal", "Pengaturan Perusahaan", "Pengaturan Kode Akun", "Backup Data", "Restore Data", "Hapus Semua Data"};
     TextView tvJudul;
 
     private static final int EXTERNAL_STORAGE_PERMISSION_CONSTANT = 100;
@@ -56,6 +57,12 @@ public class MenuPengaturanActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_pengaturan_activity);
 
+//        setting agar memasukkan data neraca awal hanya bisa dilakukan sekali saja
+            final SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(MenuPengaturanActivity.this);
+            final SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putBoolean("NeracaAwal", false);
+            editor.commit();
+
         tvJudul = (TextView)findViewById(R.id.tvTitlePengaturan);
         tvJudul.setText("PENGATURAN");
 
@@ -63,7 +70,7 @@ public class MenuPengaturanActivity extends AppCompatActivity{
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,R.layout.simple_listview, R.id.label, menu);
 
-        lvMenuPengaturan = (ListView)findViewById(R.id.lvPengaturan);
+        lvMenuPengaturan =  (ListView)findViewById(R.id.lvPengaturan);
         lvMenuPengaturan.setAdapter(arrayAdapter);
 
         lvMenuPengaturan.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -73,27 +80,36 @@ public class MenuPengaturanActivity extends AppCompatActivity{
                 Log.i("YangDiklik", "yang dipilih adalah : " + parent.getItemAtPosition(position).toString());
                 switch (position){
                     case 0:{
+                        if (!sharedPreferences.getBoolean("NeracaAwal",false)){
+                            Intent intent = new Intent(MenuPengaturanActivity.this, SettingNeracaAwalActivity.class);
+                            startActivity(intent);
+                        }else {
+                            Toast.makeText(MenuPengaturanActivity.this, "Lakukan Edit Neraca Awal di Jurnal", Toast.LENGTH_SHORT).show();
+                        }
+                        break;
+                    }
+                    case 1:{
                         Intent intent = new Intent(MenuPengaturanActivity.this, SettingDataPerusahaan.class);
                         startActivity(intent);
                         break;
                     }
-                    case 1:{
+                    case 2:{
 //                        pindah ke aktiviti pengaturan kode akun
                         Intent intent = new Intent(MenuPengaturanActivity.this, DaftarJenisAkun.class);
                         startActivity(intent);
                         break;
                     }
-                    case 2:{
+                    case 3:{
 //                        melakukan backup
                         cekPermission("backup");
                         break;
                     }
-                    case 3:{
+                    case 4:{
 //                        melakukan restore
                         cekPermission("restore");
                         break;
                     }
-                    case 4:{
+                    case 5:{
 //                        menghapus semua data yang ada
                         DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
                             @Override
