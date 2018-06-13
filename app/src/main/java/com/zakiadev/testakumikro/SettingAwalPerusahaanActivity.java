@@ -59,13 +59,14 @@ public class SettingAwalPerusahaanActivity extends AppCompatActivity {
 
                     new DBAdapterMix(SettingAwalPerusahaanActivity.this).insertDataPerusahaan(dataPerusahaan);
 
-                            Intent intent = new Intent(SettingAwalPerusahaanActivity.this, MenuUtamaActivity.class);
-                            startActivity(intent);
-                            finish();
-                            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(SettingAwalPerusahaanActivity.this);
-                            SharedPreferences.Editor editor = sharedPreferences.edit();
-                            editor.putBoolean("firstTime", true);
-                            editor.commit();
+                    SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(SettingAwalPerusahaanActivity.this);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putBoolean("DataPerusahaan", true);
+                    editor.commit();
+
+                    Intent intent = new Intent(SettingAwalPerusahaanActivity.this, IntroActivity.class);
+                    startActivity(intent);
+                    finish();
 
                 }
 

@@ -123,7 +123,7 @@ public class SettingNeracaAwalActivity extends AppCompatActivity implements Date
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                pilihanTransaksi = position;
+                pilihanTransaksi = 99;
             }
 
             @Override
@@ -267,11 +267,6 @@ public class SettingNeracaAwalActivity extends AppCompatActivity implements Date
             Log.i("queryTrans", "insert into trans(pid,kode_akun,nominal,pos) values (" + pid + "," + kodeKreditAl.get(i).toString() + "," + nominalAkunKredit + ",1" + ");");
         }
 
-        SharedPreferences sharedPreferences1 = PreferenceManager.getDefaultSharedPreferences(SettingNeracaAwalActivity.this);
-        SharedPreferences.Editor editor1 = sharedPreferences1.edit();
-        editor1.putBoolean("NeracaAwal", true);
-        editor1.commit();
-
         int tahun = calendar.get(Calendar.YEAR);
         ArrayList<DataModal> dataBulanModals = new DBAdapterMix(SettingNeracaAwalActivity.this).selectDistinctBulan();
         DataModal dataModal;
@@ -282,10 +277,11 @@ public class SettingNeracaAwalActivity extends AppCompatActivity implements Date
             new DBAdapterMix(SettingNeracaAwalActivity.this).updateModal(bulanFor,tahun);
         }
 
-//        Setelah masukin neraca awal, activitynya langsung nutup lagi
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(SettingNeracaAwalActivity.this);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean("NeracaAwal", true);
+        editor.commit();
 
-//        Intent intent = new Intent(SettingNeracaAwalActivity.this, MenuUtamaActivity.class);
-//        startActivity(intent);
         finish();
     }
 

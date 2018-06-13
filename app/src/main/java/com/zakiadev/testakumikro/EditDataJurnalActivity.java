@@ -78,6 +78,11 @@ public class EditDataJurnalActivity extends AppCompatActivity implements DatePic
         editKet = intent.getStringExtra("ket");
         editKodeTrans = intent.getStringExtra("kodeTrans");
 
+        if (editKodeTrans.equals("99")){
+            pilihanTransaksi = 99;
+            Toast.makeText(EditDataJurnalActivity.this,"99 Boss",Toast.LENGTH_SHORT).show();
+        }
+
         llDebet = (LinearLayout)findViewById(R.id.llDebet);
         llKredit = (LinearLayout)findViewById(R.id.llKredit);
 
@@ -129,14 +134,27 @@ public class EditDataJurnalActivity extends AppCompatActivity implements DatePic
         listSpinner.add("Penyesuaian");
         ArrayAdapter adapterSpinner = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, listSpinner);
         adapterSpinner.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+
+//        digunakan untuk setting jika yang di edit adalah neraca awal maka bisa kebuka semuanya
+
+        if (editKodeTrans.equals("99")){
+            spinner.setSelection(1);
+            etKeterangan.setEnabled(false);
+            pilihanTransaksi = 99;
+        }else {
+            spinner.setSelection(Integer.parseInt(editKodeTrans));
+        }
         spinner.setAdapter(adapterSpinner);
-        spinner.setSelection(Integer.parseInt(editKodeTrans));
 
 //        spinner on data change listener
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                pilihanTransaksi = position;
+                if (editKodeTrans.equals("99")){
+                    pilihanTransaksi = 99;
+                }else{
+                    pilihanTransaksi = position;
+                }
             }
 
             @Override

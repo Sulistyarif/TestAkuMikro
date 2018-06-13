@@ -59,9 +59,9 @@ public class MenuPengaturanActivity extends AppCompatActivity{
 
 //        setting agar memasukkan data neraca awal hanya bisa dilakukan sekali saja
             final SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(MenuPengaturanActivity.this);
-            final SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putBoolean("NeracaAwal", false);
-            editor.commit();
+//            final SharedPreferences.Editor editor = sharedPreferences.edit();
+//            editor.putBoolean("NeracaAwal", false);
+//            editor.commit();
 
         tvJudul = (TextView)findViewById(R.id.tvTitlePengaturan);
         tvJudul.setText("PENGATURAN");

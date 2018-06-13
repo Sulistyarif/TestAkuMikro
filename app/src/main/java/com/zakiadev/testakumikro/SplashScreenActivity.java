@@ -23,8 +23,8 @@ public class SplashScreenActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash_screen_activity);
 
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        if (!sharedPreferences.getBoolean("firstTime", false)){
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(SplashScreenActivity.this);
+        if (!sharedPreferences.getBoolean("firstTime", false)) {
 //            Toast.makeText(SplashScreenActivity.this, "Hanya akan muncul pertama kali install", Toast.LENGTH_LONG).show();
             Log.i("firstInstallation", "Hanya akan berjalan pada saat pertama kali install");
             masukanDataDefault();
@@ -56,6 +56,16 @@ public class SplashScreenActivity extends AppCompatActivity{
 //                    finish();
 //                }
 //            }, 2000L);
+        }else if (!sharedPreferences.getBoolean("DataPerusahaan", false)){
+            final Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    startActivity(new Intent(SplashScreenActivity.this, SettingAwalPerusahaanActivity.class));
+                    finish();
+                }
+            }, 1000L);
+
         }else {
             final Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
