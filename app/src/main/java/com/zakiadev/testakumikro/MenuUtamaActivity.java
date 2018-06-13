@@ -1,8 +1,12 @@
 package com.zakiadev.testakumikro;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -48,6 +52,29 @@ public class MenuUtamaActivity extends AppCompatActivity implements View.OnClick
         menu5.setOnClickListener(this);
         menu6.setOnClickListener(this);
 
+        showInfoNeracaAwal();
+
+    }
+
+    private void showInfoNeracaAwal() {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(MenuUtamaActivity.this);
+        if (!sharedPreferences.getBoolean("infoNeracaAwal", false)) {
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(MenuUtamaActivity.this);
+            builder.setMessage("Pengaturan Neraca Awal Terdapat di Pengaturan > Pengaturan Neraca Awal")
+                    .setCancelable(false)
+                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            //do things
+                        }
+                    });
+            AlertDialog alert = builder.create();
+            alert.show();
+
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putBoolean("infoNeracaAwal", true);
+            editor.commit();
+        }
     }
 
     @Override

@@ -1,11 +1,16 @@
 package com.zakiadev.testakumikro;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * Created by sulistyarif on 13/06/18.
@@ -44,6 +49,12 @@ public class IntroActivity extends AppCompatActivity {
                 Intent intent = new Intent(IntroActivity.this, MenuUtamaActivity.class);
                 startActivity(intent);
                 finish();
+
+//                Toast toast = Toast.makeText(IntroActivity.this, "Pengaturan Neraca Awal Terdapat di Pengaturan > Pengaturan Neraca Awal", Toast.LENGTH_LONG);
+//                TextView v = (TextView) toast.getView().findViewById(android.R.id.message);
+//                if( v != null) v.setGravity(Gravity.CENTER);
+//                toast.show();
+
             }
         });
 
