@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.zakiadev.testakumikro.data.DataPerusahaan;
@@ -24,6 +25,7 @@ public class SettingAwalPerusahaanActivity extends AppCompatActivity {
 
     EditText etNamaPerusahaan, etPemilik, etAlamat, etTelp, etEmail;
     Button btSimpan;
+    TextView tvEmail;
     DialogInterface.OnClickListener dialogClickListener;
 
     @Override
@@ -38,6 +40,11 @@ public class SettingAwalPerusahaanActivity extends AppCompatActivity {
         etTelp = (EditText)findViewById(R.id.etTelepon);
         etEmail = (EditText)findViewById(R.id.etEmail);
 
+        tvEmail = (TextView)findViewById(R.id.tvEmailAwal);
+
+        etEmail.setVisibility(View.GONE);
+        tvEmail.setVisibility(View.GONE);
+
         btSimpan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -48,7 +55,8 @@ public class SettingAwalPerusahaanActivity extends AppCompatActivity {
                     String pemilik = etPemilik.getText().toString();
                     String alamat = etAlamat.getText().toString();
                     String telp = etAlamat.getText().toString();
-                    String email = etEmail.getText().toString();
+//                    String email = etEmail.getText().toString();
+                    String email = "";
 
                     DataPerusahaan dataPerusahaan = new DataPerusahaan();
                     dataPerusahaan.setNamaPers(namaPers);

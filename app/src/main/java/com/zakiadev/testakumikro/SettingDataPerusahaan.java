@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.zakiadev.testakumikro.data.DataPerusahaan;
@@ -19,6 +20,7 @@ public class SettingDataPerusahaan extends AppCompatActivity {
 
     Button btEdit, btSimpan;
     EditText etNamaPers, etNamaPemilik, etAlamat, etTelp, etEmail;
+    TextView tvEmail;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -33,6 +35,11 @@ public class SettingDataPerusahaan extends AppCompatActivity {
         etAlamat = (EditText)findViewById(R.id.etSettAlamat);
         etTelp = (EditText)findViewById(R.id.etSettTelepon);
         etEmail = (EditText)findViewById(R.id.etSettEmail);
+
+        tvEmail = (TextView)findViewById(R.id.tvEmail);
+
+        etEmail.setVisibility(View.GONE);
+        tvEmail.setVisibility(View.GONE);
 
         DataPerusahaan dataPerusahaan = new DBAdapterMix(SettingDataPerusahaan.this).selectDataPerusahaan();
 
@@ -75,7 +82,8 @@ public class SettingDataPerusahaan extends AppCompatActivity {
                     dataPerusahaan1.setNamaPemilik(etNamaPemilik.getText().toString());
                     dataPerusahaan1.setAlamat(etAlamat.getText().toString());
                     dataPerusahaan1.setTelp(etTelp.getText().toString());
-                    dataPerusahaan1.setEmail(etEmail.getText().toString());
+//                    dataPerusahaan1.setEmail(etEmail.getText().toString());
+                    dataPerusahaan1.setEmail("");
 
                     new DBAdapterMix(SettingDataPerusahaan.this).insertDataPerusahaan(dataPerusahaan1);
                 }

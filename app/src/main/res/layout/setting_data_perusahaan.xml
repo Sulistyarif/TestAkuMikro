@@ -77,7 +77,7 @@
             android:inputType="number" />
 
         <TextView
-            android:id="@+id/textView7"
+            android:id="@+id/tvEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Alamat Email"
