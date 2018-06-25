@@ -13,16 +13,26 @@
         <!--android:scaleType="fitXY"-->
         <!--app:srcCompat="@drawable/splash_screen" />-->
 
-    <ImageView
-        android:id="@+id/imageView10"
-        android:layout_width="0dp"
+    <!--<ImageView-->
+        <!--android:id="@+id/imageView10"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginStart="1dp"-->
+        <!--android:contentDescription="isNice"-->
+        <!--app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--app:layout_constraintEnd_toEndOf="parent"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintTop_toTopOf="parent"-->
+        <!--app:srcCompat="@drawable/logo" />-->
+
+    <TextView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="1dp"
-        android:contentDescription="isNice"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo" />
+        android:text="ini judul di splash screen"
+        android:textColor="#000"
+        android:textSize="24dp"
+        android:textAlignment="center"
+        android:paddingTop="40dp"
+        />
 
 </android.support.constraint.ConstraintLayout>

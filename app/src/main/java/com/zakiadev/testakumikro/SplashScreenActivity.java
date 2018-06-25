@@ -85,21 +85,21 @@ public class SplashScreenActivity extends AppCompatActivity{
                 {"1101", "Kas"},
                 {"1102", "Kas di Bank"},
                 {"1103", "Piutang Usaha"},
-                {"1104", "Perlengkapan"},
-                {"1105", "Alat Tulis Kantor"},
-                {"1106", "Sewa Dibayar Dimuka"},
-                {"1107", "Asuransi Dibayar Dimuka"},
-                {"1108", "Iklan Dibayar Dimuka"},
-                {"1109", "Listrik Dibayar Dimuka"},
-                {"1110", "Piutang Sewa"}
+                {"1104", "Piutang Sewa"},
+                {"1105", "Sewa Dibayar Dimuka"},
+                {"1106", "Asuransi Dibayar Dimuka"},
+                {"1107", "Iklan Dibayar Dimuka"},
+                {"1108", "Listrik Dibayar Dimuka"},
+                {"1109", "Perlengkapan"},
+                {"1110", "Alat Tulis Kantor"}
         };
 
         String[][] assetTetap ={
-                {"1201", "Tanah"},
-                {"1202", "Bangunan"},
                 {"1203", "Peralatan"},
+                {"1205", "Mesin"},
+                {"1202", "Bangunan"},
                 {"1204", "Kendaraan"},
-                {"1205", "Mesin"}
+                {"1201", "Tanah"}
         };
 
         String [][] utangJangkaPendek = {
@@ -167,11 +167,12 @@ public class SplashScreenActivity extends AppCompatActivity{
         };
 
         String[][] akunLainLain = {
-                {"7101", "Akumulasi Penyusutan Bangunan"},
-                {"7102", "Akumulasi Penyusutan Peralatan"},
-                {"7103", "Akumulasi Penyusutan Kendaraan"},
-                {"7104", "Akumulasi Penyusutan Mesin"},
-                {"7105", "Cadangan Kerugian Piutang"}
+                {"7101", "Akumulasi Penyusutan Peralatan"},
+                {"7102", "Akumulasi Penyusutan Mesin"},
+                {"7103", "Akumulasi Penyusutan Bangunan"},
+                {"7104", "Akumulasi Penyusutan Kendaraan"},
+                {"7105", "Akumulasi Penyusutan Kendaraan"},
+                {"7106", "Cadangan Kerugian Piutang"}
         };
 
 //        memasukkan data asset lancar
