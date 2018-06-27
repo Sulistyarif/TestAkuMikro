@@ -58,6 +58,15 @@ public class IntroActivity extends AppCompatActivity {
             }
         });
 
+        changeActivityBackground();
+
+    }
+
+    private void changeActivityBackground() {
+//        View someView = findViewById(R.id.clIntro);
+//        View root = someView.getRootView();
+//        root.setBackgroundColor(getResources().getColor(android.R.color.white));
+        Toast toast = Toast.makeText(IntroActivity.this, "Pembuat putih layar telah dihilangkan", Toast.LENGTH_LONG);
     }
 
     private void initButton() {
