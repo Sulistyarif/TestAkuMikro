@@ -22,6 +22,8 @@ import com.zakiadev.testakumikro.db.DBAdapterMix;
 
 /**
  * Created by Sulistyarif on 31/01/2018.
+ * tes perubahan git
+ * perubahan dari windows 10
  */
 
 public class MenuUtamaActivity extends AppCompatActivity implements View.OnClickListener {
