@@ -14,10 +14,12 @@ import android.view.View;
 import com.zakiadev.testakumikro.db.DBAdapterMix;
 import com.zakiadev.testakumikro.tablehelper.TableHelperDataJurnalKec;
 
+import de.codecrafters.tableview.TableHeaderAdapter;
 import de.codecrafters.tableview.TableView;
 import de.codecrafters.tableview.listeners.TableDataClickListener;
 import de.codecrafters.tableview.listeners.TableHeaderClickListener;
 import de.codecrafters.tableview.model.TableColumnDpWidthModel;
+import de.codecrafters.tableview.model.TableColumnWeightModel;
 import de.codecrafters.tableview.toolkit.SimpleTableDataAdapter;
 import de.codecrafters.tableview.toolkit.SimpleTableHeaderAdapter;
 
@@ -34,18 +36,29 @@ public class JurnalKecActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.jurnal_kecil_activity);
+        setContentView(R.layout.jurnal_kecil_activity_try_fixed);
 
         tableHelperDataJurnalKec = new TableHelperDataJurnalKec(this);
         tableView = (TableView<String[]>)findViewById(R.id.tvKecJurnal);
 //        tableView.setColumnCount(2);
         tableView.setHeaderBackgroundColor(Color.parseColor("#3498db"));
-        tableView.setHeaderAdapter(new SimpleTableHeaderAdapter(this,tableHelperDataJurnalKec.getColHeader()));
+//        tableView.setHeaderAdapter(new SimpleTableHeaderAdapter(this,tableHelperDataJurnalKec.getColHeader()));
+
+        SimpleTableHeaderAdapter simpleTableHeaderAdapter = new SimpleTableHeaderAdapter(this, tableHelperDataJurnalKec.getColHeader());
+        simpleTableHeaderAdapter.setPaddings(80,5,5,5);
+        tableView.setHeaderAdapter(simpleTableHeaderAdapter);
+
         tableView.setDataAdapter(new SimpleTableDataAdapter(this, tableHelperDataJurnalKec.getDataJurnal3()));
-        TableColumnDpWidthModel columnModel = new TableColumnDpWidthModel(JurnalKecActivity.this, 2, 200);
-        columnModel.setColumnWidth(0, 120);
-        columnModel.setColumnWidth(1, 250);
-        tableView.setColumnModel(columnModel);
+//        TableColumnDpWidthModel columnModel = new TableColumnDpWidthModel(JurnalKecActivity.this, 2, 200);
+//        columnModel.setColumnWidth(0, 120);
+//        columnModel.setColumnWidth(1, 250);
+//        tableView.setColumnModel(columnModel);
+
+        TableColumnWeightModel columnWeightModel = new TableColumnWeightModel(2);
+        columnWeightModel.setColumnWeight(1,1);
+        columnWeightModel.setColumnWeight(2,3);
+        tableView.setColumnModel(columnWeightModel);
+
 
         fab = (FloatingActionButton)findViewById(R.id.btnAddJurnal);
         fab.setOnClickListener(new View.OnClickListener() {

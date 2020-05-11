@@ -16,6 +16,7 @@ import com.zakiadev.testakumikro.tablehelper.TableHelperDataAkun;
 import de.codecrafters.tableview.TableView;
 import de.codecrafters.tableview.listeners.TableDataClickListener;
 import de.codecrafters.tableview.model.TableColumnDpWidthModel;
+import de.codecrafters.tableview.model.TableColumnWeightModel;
 import de.codecrafters.tableview.toolkit.SimpleTableDataAdapter;
 import de.codecrafters.tableview.toolkit.SimpleTableHeaderAdapter;
 
@@ -36,7 +37,7 @@ public class PilihDebetActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.jurnal_kecil_activity);
+        setContentView(R.layout.jurnal_kecil_activity_try_fixed);
 
         tvJudul = (TextView)findViewById(R.id.tvJudul);
         tvJudul.setText("Pilih Akun Debet");
@@ -54,10 +55,15 @@ public class PilihDebetActivity extends AppCompatActivity {
         tableView.setHeaderBackgroundColor(Color.parseColor("#3498db"));
         tableView.setHeaderAdapter(new SimpleTableHeaderAdapter(this, tableHelperDataAkun.getColHeader()));
 
-        TableColumnDpWidthModel columnModel = new TableColumnDpWidthModel(PilihDebetActivity.this, 2, 200);
-        columnModel.setColumnWidth(0, 105);
-        columnModel.setColumnWidth(1, 300);
-        tableView.setColumnModel(columnModel);
+//        TableColumnDpWidthModel columnModel = new TableColumnDpWidthModel(PilihDebetActivity.this, 2, 200);
+//        columnModel.setColumnWidth(0, 105);
+//        columnModel.setColumnWidth(1, 300);
+//        tableView.setColumnModel(columnModel);
+
+        TableColumnWeightModel columnWeightModel = new TableColumnWeightModel(2);
+        columnWeightModel.setColumnWeight(0,2);
+        columnWeightModel.setColumnWeight(1,5);
+        tableView.setColumnModel(columnWeightModel);
 
         switch (pilihanTrans){
             case 1:{
